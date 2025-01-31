@@ -1,0 +1,8 @@
+﻿Income Range-Lower Limit,Income Range-Upper Limit,Short-Term Capital Gains Tax Rate,Long-Term Capital Gains Tax Rate
+0,11000,0.15,0
+11001,44725,0.17,0
+44726,95375,0.27,0.15
+95376,182100,0.29,0.15
+182101,231250,0.37,0.15
+231251,578125,0.4,0.15
+578126,,0.42,0.2
