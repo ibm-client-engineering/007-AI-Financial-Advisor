@@ -1,0 +1,219 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "description": "Extended OpenAPI spec for IBM Watson ML deployment text generation API with additional parameters.",
+      "title": "IBM Watson ML Text Generation API",
+      "version": "1.1.0"
+    },
+    "servers": [
+      {
+        "url": "https://{region}.ml.cloud.ibm.com",
+        "description": "IBM Watson ML API",
+        "variables": {
+          "region": {
+            "enum": ["us-south", "eu-de", "eu-gb", "jp-tok"],
+            "default": "us-south",
+            "description": "The region where you want to access the Watson ML API"
+          }
+        }
+      }
+    ],
+    "security": [
+      {
+        "oauth2": []
+      }
+    ],
+    "paths": {
+      "/ml/v1/deployments/{deployment_id}/text/generation": {
+        "post": {
+          "description": "Generates text using the specified deployment.",
+          "parameters": [
+            {
+              "name": "version",
+              "in": "query",
+              "description": "Release date of the API version to use (format YYYY-MM-DD).",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "example": "2023-05-29"
+              }
+            },
+            {
+              "name": "deployment_id",
+              "in": "path",
+              "description": "The ID of the deployment to use.",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextGenerationRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful text generation response.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TextGenerationResponse"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "Unexpected error."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "TextGenerationRequest": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "string",
+              "description": "The input prompt for text generation.",
+              "example": ""
+            },
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "decoding_method": {
+                  "type": "string",
+                  "description": "The strategy used for picking the tokens during generation.",
+                  "example": "greedy"
+                },
+                "temperature": {
+                  "type": "number",
+                  "description": "Value to modulate next token probabilities (range: 0.0 to 2.0).",
+                  "example": 0.7
+                },
+                "top_k": {
+                  "type": "integer",
+                  "description": "The number of highest probability tokens to keep for top-k sampling (range: 1 to 100).",
+                  "example": 50
+                },
+                "random_seed": {
+                "type": "integer",
+                "description": "The random number generator seed to use in sampling mode for experimental repeatability.",
+                "example": "1"
+                },
+                "top_p": {
+                  "type": "number",
+                  "description": "Probability threshold for nucleus sampling (range: 0.0 to 1.0).",
+                  "example": 0.5
+                },
+                "max_new_tokens": {
+                  "type": "integer",
+                  "description": "The maximum number of new tokens to generate.",
+                  "example": 2048
+                },
+                "min_new_tokens": {
+                  "type": "integer",
+                  "description": "The minimum number of new tokens to generate.",
+                  "example": 0
+                },
+                "repetition_penalty": {
+                  "type": "number",
+                  "description": "Penalty for repeating tokens in generation.",
+                  "example": 1.1
+                },
+                "stop_sequences": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Sequences that, if generated, will stop text generation.",
+                  "example": ["\n\n"]
+                }
+              }
+            },
+            "moderations": {
+              "type": "object",
+              "properties": {
+                "hap": {
+                  "$ref": "#/components/schemas/ModerationSettings"
+                },
+                "pii": {
+                  "$ref": "#/components/schemas/ModerationSettings"
+                }
+              }
+            }
+          }
+        },
+        "ModerationSettings": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "$ref": "#/components/schemas/ModerationThreshold"
+            },
+            "output": {
+              "$ref": "#/components/schemas/ModerationThreshold"
+            }
+          }
+        },
+        "ModerationThreshold": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "example": true
+            },
+            "threshold": {
+              "type": "number",
+              "example": 0.5
+            },
+            "mask": {
+              "type": "object",
+              "properties": {
+                "remove_entity_value": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        },
+        "TextGenerationResponse": {
+          "type": "object",
+          "properties": {
+            "generated_text": {
+              "type": "string",
+              "description": "The generated text output."
+            },
+            "stop_reason": {
+              "type": "string",
+              "description": "The reason text generation stopped."
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "oauth2": {
+          "type": "oauth2",
+          "flows": {
+            "x-apikey": {
+              "tokenUrl": "https://iam.cloud.ibm.com/identity/token",
+              "grantType": "urn:ibm:params:oauth:grant-type:apikey",
+              "secretKeys": [
+                "apikey"
+              ],
+              "paramKeys": [],
+              "scopes": {}
+            }
+          }
+        }
+      }
+    }
+  }
+  

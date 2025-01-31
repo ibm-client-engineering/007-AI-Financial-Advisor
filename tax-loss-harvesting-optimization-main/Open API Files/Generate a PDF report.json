@@ -1,0 +1,331 @@
+{
+    "info":{
+       "title":"PDF Generation API",
+       "version":"1.0.0",
+       "description":"Generates a PDF based on the provided sections and returns a link to access it.",
+       "x-ibm-skill-type":"imported",
+       "x-ibm-annotations":"true",
+       "x-ibm-skill-subtype":"public",
+       "x-ibm-application-id":"harvest-invest-pdf-gen-app",
+       "x-ibm-application-name":"Harvest & Invest PDF Generation"
+    },
+    "tags":[
+       {
+          "name":"PDF Generation",
+          "description":"Operations related to generating PDF reports."
+       }
+    ],
+    "paths":{
+       "/generate-pdf":{
+          "post":{
+             "tags":[
+                "PDF Generation"
+             ],
+             "summary":"Generate a PDF report",
+             "security":[
+                {
+                   "ApiKeyAuth":[
+                      
+                   ]
+                }
+             ],
+             "responses":{
+                "200":{
+                   "content":{
+                      "application/json":{
+                         "schema":{
+                            "type":"object",
+                            "required":[
+                               "message",
+                               "file_url"
+                            ],
+                            "properties":{
+                               "message":{
+                                  "type":"string",
+                                  "example":"PDF generated successfully",
+                                  "x-ibm-order":2
+                               },
+                               "file_url":{
+                                  "type":"string",
+                                  "example":"https://application-be.1p49p5v1tayw.us-south.codeengine.appdomain.cloud/files/Portfolio_Optimization_Report.pdf",
+                                  "x-ibm-order":3
+                               }
+                            },
+                            "description":"Response containing the success message and the URL to access the generated PDF."
+                         },
+                         "examples":{
+                            "Success":{
+                               "value":{
+                                  "message":"PDF generated successfully",
+                                  "file_url":"https://application-be.1p49p5v1tayw.us-south.codeengine.appdomain.cloud/files/Portfolio_Optimization_Report.pdf"
+                               }
+                            }
+                         }
+                      }
+                   },
+                   "description":"PDF generation succeeded."
+                },
+                "401":{
+                   "content":{
+                      "application/json":{
+                         "schema":{
+                            "type":"object",
+                            "required":[
+                               "detail"
+                            ],
+                            "properties":{
+                               "detail":{
+                                  "type":"string",
+                                  "example":"Invalid or missing API Key"
+                               }
+                            },
+                            "description":"Response containing error details."
+                         },
+                         "examples":{
+                            "Unauthorized":{
+                               "value":{
+                                  "detail":"Invalid or missing API Key"
+                               }
+                            }
+                         }
+                      }
+                   },
+                   "description":"Unauthorized. Invalid or missing API Key."
+                },
+                "500":{
+                   "content":{
+                      "application/json":{
+                         "schema":{
+                            "type":"object",
+                            "required":[
+                               "detail"
+                            ],
+                            "properties":{
+                               "detail":{
+                                  "type":"string",
+                                  "example":"Invalid or missing API Key"
+                               }
+                            },
+                            "description":"Response containing error details."
+                         },
+                         "examples":{
+                            "ServerError":{
+                               "value":{
+                                  "detail":"Error generating PDF: <error details>"
+                               }
+                            }
+                         }
+                      }
+                   },
+                   "description":"Internal server error encountered during PDF generation."
+                }
+             },
+             "description":"Generates a PDF based on the provided sections and returns a link to access it.",
+             "operationId":"generate_pdf",
+             "requestBody":{
+                "content":{
+                   "application/json":{
+                      "schema":{
+                         "type":"object",
+                         "required":[
+                            "executive_summary",
+                            "portfolio_outlook",
+                            "portfolio_summary",
+                            "actionable_next_steps",
+                            "reinvestment_strategy",
+                            "irs_compliance_warning",
+                            "tax_loss_harvesting_analysis"
+                         ],
+                         "properties":{
+                            "executive_summary":{
+                               "type":"string",
+                               "example":"This section provides an overview of the portfolio.",
+                               "description":"Content for the Executive Summary section.",
+                               "x-ibm-order":1,
+                               "x-ibm-multiline":"true"
+                            },
+                            "portfolio_outlook":{
+                               "type":"string",
+                               "example":"Expected growth: 8-10% annually.",
+                               "description":"Content for the Portfolio Outlook section.",
+                               "x-ibm-order":2,
+                               "x-ibm-multiline":"true"
+                            },
+                            "portfolio_summary":{
+                               "type":"string",
+                               "example":"The portfolio includes: - Total value: $2.5M.",
+                               "description":"Content for the Portfolio Summary section.",
+                               "x-ibm-order":3,
+                               "x-ibm-multiline":"true"
+                            },
+                            "actionable_next_steps":{
+                               "type":"string",
+                               "example":"1. Sell underperforming stocks.\n2. Reinvest in growth sectors.",
+                               "description":"Content for the Actionable Next Steps section.",
+                               "x-ibm-order":4,
+                               "x-ibm-multiline":"true"
+                            },
+                            "reinvestment_strategy":{
+                               "type":"string",
+                               "example":"Reinvest proceeds into high-growth stocks.",
+                               "description":"Content for the Reinvestment Strategy section.",
+                               "x-ibm-order":5,
+                               "x-ibm-multiline":"true"
+                            },
+                            "irs_compliance_warning":{
+                               "type":"string",
+                               "example":"Ensure compliance with IRS rules.",
+                               "description":"Content for the IRS Compliance Warning section.",
+                               "x-ibm-order":6,
+                               "x-ibm-multiline":"true"
+                            },
+                            "tax_loss_harvesting_analysis":{
+                               "type":"string",
+                               "example":"Opportunities in tech and energy sectors identified.",
+                               "description":"Content for the Tax-Loss Harvesting Analysis section.",
+                               "x-ibm-order":7,
+                               "x-ibm-multiline":"true"
+                            }
+                         },
+                         "description":"Request object containing content for each of the seven fixed sections."
+                      },
+                      "examples":{
+                         "ExamplePayload":{
+                            "value":{
+                               "executive_summary":"This section provides an overview of the portfolio.",
+                               "portfolio_outlook":"Expected growth: 8-10% annually.",
+                               "portfolio_summary":"The portfolio includes: - Total value: $2.5M.",
+                               "actionable_next_steps":"1. Sell underperforming stocks.\n2. Reinvest in growth sectors.",
+                               "reinvestment_strategy":"Reinvest proceeds into high-growth stocks.",
+                               "irs_compliance_warning":"Ensure compliance with IRS rules.",
+                               "tax_loss_harvesting_analysis":"Opportunities in tech and energy sectors identified."
+                            }
+                         }
+                      }
+                   }
+                },
+                "required":true,
+                "description":"An object containing content for each of the seven fixed sections."
+             },
+             "x-ibm-nl-entities":{
+                "entities":[
+                   
+                ]
+             },
+             "x-ibm-next-actions":[
+                
+             ],
+             "x-ibm-nl-intent-examples":[
+                "Generate a PDF report",
+                "Generates a PDF based on the provided sections and returns a link to access it."
+             ],
+             "x-ibm-conversational-skill":true
+          }
+       }
+    },
+    "openapi":"3.0.3",
+    "servers":[
+       {
+          "url":"https://application-be.1p49p5v1tayw.us-south.codeengine.appdomain.cloud"
+       }
+    ],
+    "security":[
+       {
+          "ApiKeyAuth":[
+             
+          ]
+       }
+    ],
+    "components":{
+       "schemas":{
+          "PDFResponse":{
+             "type":"object",
+             "required":[
+                "message",
+                "file_url"
+             ],
+             "properties":{
+                "message":{
+                   "type":"string",
+                   "example":"PDF generated successfully"
+                },
+                "file_url":{
+                   "type":"string",
+                   "example":"https://application-be.1p49p5v1tayw.us-south.codeengine.appdomain.cloud/files/Portfolio_Optimization_Report.pdf"
+                }
+             },
+             "description":"Response containing the success message and the URL to access the generated PDF."
+          },
+          "ErrorResponse":{
+             "type":"object",
+             "required":[
+                "detail"
+             ],
+             "properties":{
+                "detail":{
+                   "type":"string",
+                   "example":"Invalid or missing API Key"
+                }
+             },
+             "description":"Response containing error details."
+          },
+          "GeneratePDFRequest":{
+             "type":"object",
+             "required":[
+                "executive_summary",
+                "portfolio_summary",
+                "tax_loss_harvesting_analysis",
+                "reinvestment_strategy",
+                "portfolio_outlook",
+                "actionable_next_steps",
+                "irs_compliance_warning"
+             ],
+             "properties":{
+                "executive_summary":{
+                   "type":"string",
+                   "example":"This section provides an overview of the portfolio.",
+                   "description":"Content for the Executive Summary section."
+                },
+                "portfolio_outlook":{
+                   "type":"string",
+                   "example":"Expected growth: 8-10% annually.",
+                   "description":"Content for the Portfolio Outlook section."
+                },
+                "portfolio_summary":{
+                   "type":"string",
+                   "example":"The portfolio includes: - Total value: $2.5M.",
+                   "description":"Content for the Portfolio Summary section."
+                },
+                "actionable_next_steps":{
+                   "type":"string",
+                   "example":"1. Sell underperforming stocks.\n2. Reinvest in growth sectors.",
+                   "description":"Content for the Actionable Next Steps section."
+                },
+                "reinvestment_strategy":{
+                   "type":"string",
+                   "example":"Reinvest proceeds into high-growth stocks.",
+                   "description":"Content for the Reinvestment Strategy section."
+                },
+                "irs_compliance_warning":{
+                   "type":"string",
+                   "example":"Ensure compliance with IRS rules.",
+                   "description":"Content for the IRS Compliance Warning section."
+                },
+                "tax_loss_harvesting_analysis":{
+                   "type":"string",
+                   "example":"Opportunities in tech and energy sectors identified.",
+                   "description":"Content for the Tax-Loss Harvesting Analysis section."
+                }
+             },
+             "description":"Request object containing content for each of the seven fixed sections."
+          }
+       },
+       "securitySchemes":{
+          "ApiKeyAuth":{
+             "in":"header",
+             "name":"X-API-Key",
+             "type":"apiKey"
+          }
+       }
+    }
+ }
