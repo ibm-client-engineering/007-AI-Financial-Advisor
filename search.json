@@ -20,24 +20,6 @@
     ]
   },
   {
-    "objectID": "src/implementation_methodology/stepone-imp.html",
-    "href": "src/implementation_methodology/stepone-imp.html",
-    "title": "Step One",
-    "section": "",
-    "text": "Step One Implementation - The How\n(Details the process and techniques used to execute the technical solution)",
-    "crumbs": [
-      "Implementation Methodology",
-      "Step One"
-    ]
-  },
-  {
-    "objectID": "src/landing_page/landing_page.html",
-    "href": "src/landing_page/landing_page.html",
-    "title": "Project Name",
-    "section": "",
-    "text": "Project Name\nSubtitle\n\n\nOur Documentation \n\n\n\n\n\nNext Steps\n\n\n\nL ink 1\n\n\n\nLink 2"
-  },
-  {
     "objectID": "src/solution_overview/environment.html",
     "href": "src/solution_overview/environment.html",
     "title": "Step Two",
@@ -46,27 +28,6 @@
     "crumbs": [
       "Solution Overview",
       "Environment"
-    ]
-  },
-  {
-    "objectID": "src/key-takeaway.html",
-    "href": "src/key-takeaway.html",
-    "title": "Key Takeaways",
-    "section": "",
-    "text": "Best Practices\n(Capture the main takeaways and results of the project)",
-    "crumbs": [
-      "Key Takeaways"
-    ]
-  },
-  {
-    "objectID": "src/solution_overview/troubleshooting.html",
-    "href": "src/solution_overview/troubleshooting.html",
-    "title": "Step Three",
-    "section": "",
-    "text": "Step Three Solution",
-    "crumbs": [
-      "Solution Overview",
-      "Troubleshooting"
     ]
   },
   {
@@ -92,6 +53,17 @@
     ]
   },
   {
+    "objectID": "src/implementation_methodology/stepone-imp.html",
+    "href": "src/implementation_methodology/stepone-imp.html",
+    "title": "Step One",
+    "section": "",
+    "text": "Step One Implementation - The How\n(Details the process and techniques used to execute the technical solution)",
+    "crumbs": [
+      "Implementation Methodology",
+      "Step One"
+    ]
+  },
+  {
     "objectID": "src/implementation_methodology/stepthree-imp.html",
     "href": "src/implementation_methodology/stepthree-imp.html",
     "title": "Step Three",
@@ -101,5 +73,33 @@
       "Implementation Methodology",
       "Step Three"
     ]
+  },
+  {
+    "objectID": "src/key-takeaway.html",
+    "href": "src/key-takeaway.html",
+    "title": "Key Takeaways",
+    "section": "",
+    "text": "Best Practices\n(Capture the main takeaways and results of the project)",
+    "crumbs": [
+      "Key Takeaways"
+    ]
+  },
+  {
+    "objectID": "src/solution_overview/troubleshooting.html",
+    "href": "src/solution_overview/troubleshooting.html",
+    "title": "Step Three",
+    "section": "",
+    "text": "Step Three Solution",
+    "crumbs": [
+      "Solution Overview",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "src/landing_page/landing_page.html",
+    "href": "src/landing_page/landing_page.html",
+    "title": "Project Name",
+    "section": "",
+    "text": "Project Name\nSubtitle\n\n\nOur Documentation \n\n\n\n\n\nNext Steps\n\n\n\nL ink 1\n\n\n\nLink 2"
   }
 ]

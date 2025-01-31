@@ -1,1 +1,1 @@
-Sitemap: https://ibm-client-engineering.github.io/solution-template-quarto/sitemap.xml
+Sitemap: https://ibm-client-engineering.github.io/007-AI-Financial-Advisor/sitemap.xml
