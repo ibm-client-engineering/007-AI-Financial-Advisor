@@ -1,0 +1,10 @@
+---
+title: "Step One"
+format: html
+---
+
+### Step One Solution - The What
+
+The solution leverages a multi-layered technical architecture combining watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The data layer ingests structured and unstructured data into Cloud Object Storage, while the processing layer utilizes Mixtral LLM for report generation and a custom BYOM Falcon Model for email generation. The integration layer uses watsonx.orchestrate with prebuilt skills for Gmail automation and custom skills for PDF generation and report formatting.
+
+<img src="../../images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="architecture" width="800">

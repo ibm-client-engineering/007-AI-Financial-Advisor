@@ -1,0 +1,12 @@
+---
+title: "Step Three"
+format: html
+---
+
+### Step Three Implementation
+
+Final implementation involves setting up professional-grade output generation using:
+- watsonx Orchestrate custom skill for formatting and branding
+- PDF Generation Application in IBM Code Engine
+- Dynamic tables for financial clarity
+- AI-driven natural language understanding for financial queries

@@ -1,0 +1,8 @@
+---
+title: "Step One"
+format: html
+---
+
+### Step One Implementation - The How
+
+Implementation begins with data management and real-time retrieval setup. This includes configuring ElasticSearch queries for data ingestion, implementing FIFO methodology for unrealized gains/losses, and establishing tax-compliant algorithms for wash-sale rules. The system uses RAG architecture integrated with watsonx Discovery for improved data processing.
