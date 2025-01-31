@@ -204,17 +204,143 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
 <div id="cell-1" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> typesimport pandas <span class="im">as</span> pdimport ibm_boto3from botocore.client <span class="im">import</span> Configimport jsondef <span class="fu">__iter__</span>(<span class="va">self</span>): <span class="cf">return</span> <span class="dv">0</span><span class="co"># @hidden_cell# The following code accesses a file in your IBM Cloud Object Storage. It includes your credentials.# You might want to remove those credentials before you share your notebook.Cloud_Object_Storage_cx_client = ibm_boto3.client(    service_name='s3',    ibm_api_key_id='akp-TxtorFxxFtq_hxjaIyqk9Dr64nptyV1r51DNzeIL',    ibm_service_instance_id='crn:v1:bluemix:public:cloud-object-storage:global:a/255bb8163fa943e89de4555de2a7d13c:2a47ec7f-8695-42ae-bedd-8b091e397eea::',    ibm_auth_endpoint='https://iam.cloud.ibm.com/identity/token',    config=Config(signature_version='oauth'),    endpoint_url='https://s3.us-south.cloud-object-storage.appdomain.cloud')bucket = '007tlhdata'object_key = 'json_customer_data/all_customers_data.json'body = Cloud_Object_Storage_cx_client.get_object(Bucket=bucket, Key=object_key)['Body'].read()# Decode the body into JSONdata = json.loads(body)all_customer_data = json.loads(body)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> types</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ibm_boto3</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> botocore.client <span class="im">import</span> Config</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>): <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># @hidden_cell</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The following code accesses a file in your IBM Cloud Object Storage. It includes your credentials.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># You might want to remove those credentials before you share your notebook.</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>Cloud_Object_Storage_cx_client <span class="op">=</span> ibm_boto3.client(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    service_name<span class="op">=</span><span class="st">'s3'</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    ibm_api_key_id<span class="op">=</span><span class="st">'ADD YOUR API KEY HERE'</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    ibm_service_instance_id<span class="op">=</span><span class="st">'crn:v1:bluemix:public:cloud-object-storage:global:a/255bb8163fa943e89de4555de2a7d13c:2a47ec7f-8695-42ae-bedd-8b091e397eea::'</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    ibm_auth_endpoint<span class="op">=</span><span class="st">'https://iam.cloud.ibm.com/identity/token'</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    config<span class="op">=</span>Config(signature_version<span class="op">=</span><span class="st">'oauth'</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    endpoint_url<span class="op">=</span><span class="st">'https://s3.us-south.cloud-object-storage.appdomain.cloud'</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>bucket <span class="op">=</span> <span class="st">'007tlhdata'</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>object_key <span class="op">=</span> <span class="st">'json_customer_data/all_customers_data.json'</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>body <span class="op">=</span> Cloud_Object_Storage_cx_client.get_object(Bucket<span class="op">=</span>bucket, Key<span class="op">=</span>object_key)[<span class="st">'Body'</span>].read()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Decode the body into JSON</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> json.loads(body)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>all_customer_data <span class="op">=</span> json.loads(body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-2" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tempfilefrom elasticsearch <span class="im">import</span> Elasticsearchimport mathfrom elasticsearch <span class="im">import</span> Elasticsearch<span class="co"># Create an Elasticsearch clientes = Elasticsearch(    "https://93c0666f-8d7e-4e02-8033-be74f8b98de7.c5km1ted03t0e8geevf0.databases.appdomain.cloud:31018",    verify_certs=False,    basic_auth=("ibm_cloud_4a5c6b85_9b6b_4332_9b9b_03278e2ed106", "35eda2f56e83b1c775a50e98cc711dfd1c7533b5f23232086eea2285f774f5fe"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tempfile</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> elasticsearch <span class="im">import</span> Elasticsearch</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> elasticsearch <span class="im">import</span> Elasticsearch</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an Elasticsearch client</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>es <span class="op">=</span> Elasticsearch(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://93c0666f-8d7e-4e02-8033-be74f8b98de7.c5km1ted03t0e8geevf0.databases.appdomain.cloud:31018"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    verify_certs<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    basic_auth<span class="op">=</span>(<span class="st">"ibm_cloud_4a5c6b85_9b6b_4332_9b9b_03278e2ed106"</span>, <span class="st">"35eda2f56e83b1c775a50e98cc711dfd1c7533b5f23232086eea2285f774f5fe"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/opt/conda/envs/Python-RT24.1/lib/python3.11/site-packages/elasticsearch/_sync/client/__init__.py:399: SecurityWarning: Connecting to 'https://93c0666f-8d7e-4e02-8033-be74f8b98de7.c5km1ted03t0e8geevf0.databases.appdomain.cloud:31018' using TLS with verify_certs=False is insecure
   _transport = transport_class(</code></pre>
 </div>
 </div>
 <div id="cell-3" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> elasticsearch <span class="im">import</span> Elasticsearch, helpersfrom sentence_transformers <span class="im">import</span> SentenceTransformerimport numpy <span class="im">as</span> np<span class="co"># Define index nameindex_name = "customer_portfolios"# Step 1: Create Index with Mappingdef create_index():    mapping = {        "mappings": {            "properties": {                "Customer ID": {"type": "keyword"},                "Executive Summary": {                    "properties": {                        "Customer Profile": {                            "properties": {                                "Risk Tolerance": {"type": "keyword"},                                "Preferred Sectors": {"type": "text"},                                "Investment Goals": {"type": "keyword"}                            }                        },                        "Portfolio Summary": {                            "properties": {                                "Total Current Value": {"type": "double"},                                "Net Unrealized Gain/Loss": {"type": "double"}                            }                        }                    }                },                "Portfolio Summary": {                    "properties": {                        "Total Initial Investment": {"type": "double"},                        "Total Current Value": {"type": "double"},                        "Net Unrealized Gain/Loss Percent": {"type": "double"}                    }                },                "combined_embedding": {                    "type": "dense_vector",                    "dims": 384  # Matches the embedding dimensions                }            }        }    }    if not es.indices.exists(index=index_name):        es.indices.create(index=index_name, body=mapping)        print(f"Index '{index_name}' created successfully!")    else:        print(f"Index '{index_name}' already exists!")# Step 2: Generate Embeddingsdef generate_embedding(text):    model = SentenceTransformer('all-MiniLM-L6-v2')    embedding = model.encode(text)    return embedding.tolist()  # Convert to list for Elasticsearch# Step 3: Ingest Datadef ingest_data(data):    for record in data:        customer_id = record["Customer ID"]        # Combine text fields for embedding generation        combined_text = (            str(record["Executive Summary"]) +            str(record.get("Portfolio Summary", "")) +            str(record.get("Tax Loss Harvesting Analysis", "")) +            str(record.get("Reinvestment Recommendations", ""))        )        # Generate embeddings        embedding = generate_embedding(combined_text)        # Add embedding to the record        record["combined_embedding"] = embedding        # Index the document        es.index(index=index_name, id=customer_id, body=record)    print("Data ingested successfully!")# Main Executionif __name__ == "__main__":    all_customer_data = json.loads(body)    create_index()    ingest_data(all_customer_data)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> elasticsearch <span class="im">import</span> Elasticsearch, helpers</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define index name</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>index_name <span class="op">=</span> <span class="st">"customer_portfolios"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create Index with Mapping</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_index():</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    mapping <span class="op">=</span> {</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mappings"</span>: {</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"properties"</span>: {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Customer ID"</span>: {<span class="st">"type"</span>: <span class="st">"keyword"</span>},</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Executive Summary"</span>: {</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"properties"</span>: {</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Customer Profile"</span>: {</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"properties"</span>: {</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Risk Tolerance"</span>: {<span class="st">"type"</span>: <span class="st">"keyword"</span>},</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Preferred Sectors"</span>: {<span class="st">"type"</span>: <span class="st">"text"</span>},</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Investment Goals"</span>: {<span class="st">"type"</span>: <span class="st">"keyword"</span>}</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Portfolio Summary"</span>: {</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"properties"</span>: {</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Total Current Value"</span>: {<span class="st">"type"</span>: <span class="st">"double"</span>},</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Net Unrealized Gain/Loss"</span>: {<span class="st">"type"</span>: <span class="st">"double"</span>}</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                    }</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Portfolio Summary"</span>: {</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"properties"</span>: {</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Total Initial Investment"</span>: {<span class="st">"type"</span>: <span class="st">"double"</span>},</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Total Current Value"</span>: {<span class="st">"type"</span>: <span class="st">"double"</span>},</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Net Unrealized Gain/Loss Percent"</span>: {<span class="st">"type"</span>: <span class="st">"double"</span>}</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>                    }</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">"combined_embedding"</span>: {</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"type"</span>: <span class="st">"dense_vector"</span>,</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"dims"</span>: <span class="dv">384</span>  <span class="co"># Matches the embedding dimensions</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> es.indices.exists(index<span class="op">=</span>index_name):</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>        es.indices.create(index<span class="op">=</span>index_name, body<span class="op">=</span>mapping)</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Index '</span><span class="sc">{</span>index_name<span class="sc">}</span><span class="ss">' created successfully!"</span>)</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Index '</span><span class="sc">{</span>index_name<span class="sc">}</span><span class="ss">' already exists!"</span>)</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Generate Embeddings</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_embedding(text):</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> SentenceTransformer(<span class="st">'all-MiniLM-L6-v2'</span>)</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>    embedding <span class="op">=</span> model.encode(text)</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> embedding.tolist()  <span class="co"># Convert to list for Elasticsearch</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Ingest Data</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingest_data(data):</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> record <span class="kw">in</span> data:</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>        customer_id <span class="op">=</span> record[<span class="st">"Customer ID"</span>]</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Combine text fields for embedding generation</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>        combined_text <span class="op">=</span> (</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>            <span class="bu">str</span>(record[<span class="st">"Executive Summary"</span>]) <span class="op">+</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>            <span class="bu">str</span>(record.get(<span class="st">"Portfolio Summary"</span>, <span class="st">""</span>)) <span class="op">+</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>            <span class="bu">str</span>(record.get(<span class="st">"Tax Loss Harvesting Analysis"</span>, <span class="st">""</span>)) <span class="op">+</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>            <span class="bu">str</span>(record.get(<span class="st">"Reinvestment Recommendations"</span>, <span class="st">""</span>))</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Generate embeddings</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>        embedding <span class="op">=</span> generate_embedding(combined_text)</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add embedding to the record</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>        record[<span class="st">"combined_embedding"</span>] <span class="op">=</span> embedding</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Index the document</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>        es.index(index<span class="op">=</span>index_name, <span class="bu">id</span><span class="op">=</span>customer_id, body<span class="op">=</span>record)</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Data ingested successfully!"</span>)</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Main Execution</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>    all_customer_data <span class="op">=</span> json.loads(body)</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>    create_index()</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    ingest_data(all_customer_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/opt/conda/envs/Python-RT24.1/lib/python3.11/site-packages/urllib3/connectionpool.py:1063: InsecureRequestWarning: Unverified HTTPS request is being made to host '93c0666f-8d7e-4e02-8033-be74f8b98de7.c5km1ted03t0e8geevf0.databases.appdomain.cloud'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
@@ -235,9 +361,6 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <pre><code>/opt/conda/envs/Python-RT24.1/lib/python3.11/site-packages/urllib3/connectionpool.py:1063: InsecureRequestWarning: Unverified HTTPS request is being made to host '93c0666f-8d7e-4e02-8033-be74f8b98de7.c5km1ted03t0e8geevf0.databases.appdomain.cloud'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</code></pre>
 </div>
-</div>
-<div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
