@@ -32,16 +32,16 @@ Financial advisors operate in a rapidly changing regulatory and market environme
 - Deliver optimal portfolio outcomes.
 - Efficiently communicate and scale services to multiple clients.
 
-<img src="../images/007/GenAI_Use_Cases.png" alt="Diagram" width="800">
+<img src="/images/007/GenAI_Use_Cases.png" alt="Diagram" width="800">
 
 ### Problem Details
 
 Key challenges include navigating complex tax regulations—where staying updated and spotting tax optimization opportunities requires vigilance—and managing portfolio diversification risks, as aggressive tax-loss harvesting can inadvertently lead to asset concentration and jeopardize future returns. Advisors must also balance strategic planning with reactive market adjustments, all while struggling to keep clients informed in an environment that demands continuous education and rapid responses. Further complications arise from market volatility, where fluctuating asset prices make identifying optimal trading windows difficult, and wash-sale restrictions that can impede tax-loss harvesting efforts. High-return solutions for these issues include reducing the risk of regulatory violations by proactively tracking changes in compliance rules and using automation to deliver personalized, timely insights.
 
-<img src="../images/007/Use_Cases.png" alt="matrix" width="800">
+<img src="/images/007/Use_Cases.png" alt="matrix" width="800">
 
 ### Additional Context
 
 This set of challenges and potential solutions emerged from a feasibility and value assessment meant to prioritize the most impactful initiatives for financial advisors. By focusing on areas with both high business value and viable implementation paths—like automated wash-sale detection, dynamic portfolio adjustments, and tailored tax-harvesting reports—advisors can more effectively align with regulatory requirements, optimize investment outcomes, and maintain client confidence. This feasibility matrix was done using a Mural board for a discovery workshop and local LLMs including Llama 3.2 and Granite 3.0 to gather output on the key challenges and high ROI areas to focus on for AI for financial advisors.
 
-<img src="../images/007/007_Mac.png" alt="prototype" width="800">
+<img src="/images/007/007_Mac.png" alt="prototype" width="800">
