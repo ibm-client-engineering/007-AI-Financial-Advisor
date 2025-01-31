@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Loading – Solutions Hub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/bee.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e8bcf64876ec7cad2f78e58d541fd4f4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "Search",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/IBMlogo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Solutions Hub</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ibm-client-engineering"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-linkedin" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-linkedin">    
+        <li>
+    <a class="dropdown-item" href="http://linkedin.com/post">
+ <span class="dropdown-text">Share on your LinkedIn</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.linkedin.com/company/ibm/">
+ <span class="dropdown-text">IBM LinkedIn</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link active" data-scroll-target="#helper-functions">Helper Functions</a></li>
+  <li><a href="#portfolio-processing" id="toc-portfolio-processing" class="nav-link" data-scroll-target="#portfolio-processing">Portfolio Processing</a></li>
+  <li><a href="#tax-loss-harvesting" id="toc-tax-loss-harvesting" class="nav-link" data-scroll-target="#tax-loss-harvesting">Tax Loss Harvesting</a></li>
+  <li><a href="#wash-sale-detection" id="toc-wash-sale-detection" class="nav-link" data-scroll-target="#wash-sale-detection">Wash Sale Detection</a></li>
+  <li><a href="#reinvestment-recommendation-system" id="toc-reinvestment-recommendation-system" class="nav-link" data-scroll-target="#reinvestment-recommendation-system">Reinvestment Recommendation System</a></li>
+  <li><a href="#execute-code-and-convert-all-data-to-json-for-watsonx-discovery" id="toc-execute-code-and-convert-all-data-to-json-for-watsonx-discovery" class="nav-link" data-scroll-target="#execute-code-and-convert-all-data-to-json-for-watsonx-discovery">Execute code and Convert all data to JSON for Watsonx Discovery</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Loading</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="a13c005e" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pdfrom datetime <span class="im">import</span> datetime, timedelta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="923206f7" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_and_clean_data():    <span class="st">"""    Load and clean datasets for further analysis.    """</span>    <span class="co"># Load datasets    import os    import types    import pandas as pd    from botocore.client import Config    import ibm_boto3    def __iter__(self):         return 0    # IBM Cloud Object Storage credentials    cos_client = ibm_boto3.client(        service_name='s3',        ibm_api_key_id='NYhoYyxMoqRAPvjF9EFNTyOfSasRKs4dIdeW5_aZwlg9',        ibm_auth_endpoint="https://iam.cloud.ibm.com/identity/token",        config=Config(signature_version='oauth'),        endpoint_url='https://s3.direct.us-south.cloud-object-storage.appdomain.cloud'    )    bucket = '007tlhworkingproject-donotdelete-pr-hgvioy9vygrquk'    # Object keys and their corresponding dataframe names    object_keys = {        'transactions': 'Two_Years_Customer_Portfolio_Transactions_Data.csv',        'historical_prices': 'full_historical_prices.csv',        'customer_profiles': 'Customer_Profile.csv',        'tax_rates': 'Tax Rates.csv',        'stock_expanded_data': 'stock_expanded_data.csv'    }    dataframes = {}    # Reading each object into a pandas dataframe    for df_name, object_key in object_keys.items():        body = cos_client.get_object(Bucket=bucket, Key=object_key)['Body']        if not hasattr(body, "__iter__"):            body.__iter__ = types.MethodType(__iter__, body)        dataframes[df_name] = pd.read_csv(body)    # Extract dataframes    transactions = dataframes['transactions']    historical_prices = dataframes['historical_prices']    customer_profiles = dataframes['customer_profiles']    tax_rates = dataframes['tax_rates']    stock_expanded_data = dataframes['stock_expanded_data']    # Ensure date columns are properly parsed    transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"], errors="coerce")    historical_prices["Date"] = pd.to_datetime(historical_prices["Date"], errors="coerce")    return transactions, historical_prices, customer_profiles, tax_rates, stock_expanded_data# Call the function and load the datasetsoriginal_transactions, historical_prices, customer_profiles, tax_rates, stock_expanded_data = load_and_clean_data()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/wsuser/ipykernel_438/88197021.py:52: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"], errors="coerce")
+/tmp/wsuser/ipykernel_438/88197021.py:53: FutureWarning: In a future version of pandas, parsing datetimes with mixed time zones will raise an error unless `utc=True`. Please specify `utc=True` to opt in to the new behaviour and silence this warning. To create a `Series` with mixed offsets and `object` dtype, please use `apply` and `datetime.datetime.strptime`
+  historical_prices["Date"] = pd.to_datetime(historical_prices["Date"], errors="coerce")</code></pre>
+</div>
+</div>
+<section id="helper-functions" class="level3">
+<h3 class="anchored" data-anchor-id="helper-functions">Helper Functions</h3>
+<div id="8ebd432e" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_latest_prices(historical_data):    <span class="st">"""    Extract the latest prices for all tickers.    """</span>    latest_prices <span class="op">=</span> (        historical_data.sort_values(by<span class="op">=</span>[<span class="st">"Ticker"</span>, <span class="st">"Date"</span>])        .groupby(<span class="st">"Ticker"</span>)[<span class="st">"Close"</span>]        .last()        .to_dict()    )    <span class="cf">return</span> latest_pricesdef calculate_holding_period(buy_date, sell_date):    <span class="st">"""    Calculate the holding period between buy and sell dates.    """</span>    <span class="cf">return</span> (sell_date <span class="op">-</span> buy_date).daysdef get_applicable_tax_rate(income, holding_period, tax_rate_table):    <span class="st">"""    Determine the applicable tax rate based on income and holding period.    """</span>    <span class="cf">for</span> _, row <span class="kw">in</span> tax_rate_table.iterrows():        lower_limit <span class="op">=</span> row[<span class="st">"Income Range-Lower Limit"</span>]        upper_limit <span class="op">=</span> row[<span class="st">"Income Range-Upper Limit"</span>]        <span class="co"># Handle the last row with no upper limit        if pd.isna(upper_limit) or income &lt;= upper_limit:            if income &gt;= lower_limit:                return (                    row["Long-Term Capital Gains Tax Rate"]                    if holding_period &gt; 365                    else row["Short-Term Capital Gains Tax Rate"]                )        # If income exceeds all ranges, use the last row    last_row = tax_rate_table.iloc[-1]    return (        last_row["Long-Term Capital Gains Tax Rate"]        if holding_period &gt; 365        else last_row["Short-Term Capital Gains Tax Rate"]    )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="portfolio-processing" class="level3">
+<h3 class="anchored" data-anchor-id="portfolio-processing">Portfolio Processing</h3>
+<div id="42a1736c" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_fifo_portfolio_with_metrics(transactions, current_prices, customer_id):    <span class="st">"""    Compute FIFO portfolio with unrealized gains/losses and metrics.    """</span>    transactions_filtered <span class="op">=</span> transactions[transactions[<span class="st">"Customer ID"</span>] <span class="op">==</span> customer_id].copy()    transactions_filtered <span class="op">=</span> transactions_filtered.sort_values(by<span class="op">=</span>[<span class="st">"Ticker"</span>, <span class="st">"Transaction Date"</span>])        portfolio <span class="op">=</span> []    <span class="cf">for</span> ticker, group <span class="kw">in</span> transactions_filtered.groupby(<span class="st">"Ticker"</span>):        purchase_lots <span class="op">=</span> []        remaining_quantity <span class="op">=</span> <span class="dv">0</span>                <span class="cf">for</span> _, row <span class="kw">in</span> group.iterrows():            <span class="cf">if</span> row[<span class="st">"Transaction Type"</span>] <span class="op">==</span> <span class="st">"Buy"</span>:                purchase_lots.append((row[<span class="st">"Quantity"</span>], row[<span class="st">"Price"</span>], row[<span class="st">"Transaction Date"</span>]))                remaining_quantity <span class="op">+=</span> row[<span class="st">"Quantity"</span>]            <span class="cf">elif</span> row[<span class="st">"Transaction Type"</span>] <span class="op">==</span> <span class="st">"Sell"</span>:                sell_quantity <span class="op">=</span> row[<span class="st">"Quantity"</span>]                <span class="cf">while</span> sell_quantity <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> purchase_lots:                    lot_quantity, lot_price, lot_date <span class="op">=</span> purchase_lots[<span class="dv">0</span>]                    <span class="cf">if</span> sell_quantity <span class="op">&gt;=</span> lot_quantity:                        sell_quantity <span class="op">-=</span> lot_quantity                        remaining_quantity <span class="op">-=</span> lot_quantity                        purchase_lots.pop(<span class="dv">0</span>)                    <span class="cf">else</span>:                        purchase_lots[<span class="dv">0</span>] <span class="op">=</span> (lot_quantity <span class="op">-</span> sell_quantity, lot_price, lot_date)                        remaining_quantity <span class="op">-=</span> sell_quantity                        sell_quantity <span class="op">=</span> <span class="dv">0</span>        <span class="cf">if</span> remaining_quantity <span class="op">&gt;</span> <span class="dv">0</span>:            total_cost <span class="op">=</span> <span class="bu">sum</span>(lot[<span class="dv">0</span>] <span class="op">*</span> lot[<span class="dv">1</span>] <span class="cf">for</span> lot <span class="kw">in</span> purchase_lots)            weighted_avg_price <span class="op">=</span> total_cost <span class="op">/</span> remaining_quantity            holding_periods <span class="op">=</span> [                (lot[<span class="dv">0</span>] <span class="op">/</span> remaining_quantity) <span class="op">*</span> (datetime.now() <span class="op">-</span> lot[<span class="dv">2</span>]).days <span class="cf">for</span> lot <span class="kw">in</span> purchase_lots            ]            avg_holding_period <span class="op">=</span> <span class="bu">sum</span>(holding_periods)            current_price <span class="op">=</span> current_prices.get(ticker, <span class="dv">0</span>)            unrealized_gain_loss <span class="op">=</span> (current_price <span class="op">-</span> weighted_avg_price) <span class="op">*</span> remaining_quantity            portfolio.append({                <span class="st">"Ticker"</span>: ticker,                <span class="st">"Quantity"</span>: remaining_quantity,                <span class="st">"Purchase Price"</span>: weighted_avg_price,                <span class="st">"Current Price"</span>: current_price,                <span class="st">"Unrealized Gain/Loss"</span>: unrealized_gain_loss,                <span class="st">"Holding Period (Days)"</span>: avg_holding_period            })    <span class="cf">return</span> pd.DataFrame(portfolio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tax-loss-harvesting" class="level3">
+<h3 class="anchored" data-anchor-id="tax-loss-harvesting">Tax Loss Harvesting</h3>
+<div id="346164e2" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> identify_tlh_candidates(portfolio):    <span class="st">"""    Identify TLH candidates with unrealized losses.    """</span>    <span class="cf">return</span> portfolio[portfolio[<span class="st">"Unrealized Gain/Loss"</span>] <span class="op">&lt;</span> <span class="dv">0</span>].sort_values(<span class="st">"Unrealized Gain/Loss"</span>)<span class="kw">def</span> calculate_tax_savings(tlh_candidates, income, tax_rate_table):    <span class="st">"""    Calculate tax savings for TLH candidates.    """</span>    tlh_candidates[<span class="st">"Tax Rate"</span>] <span class="op">=</span> tlh_candidates.<span class="bu">apply</span>(        <span class="kw">lambda</span> row: get_applicable_tax_rate(income, row[<span class="st">"Holding Period (Days)"</span>], tax_rate_table),        axis<span class="op">=</span><span class="dv">1</span>    )    tlh_candidates[<span class="st">"Tax Savings"</span>] <span class="op">=</span> <span class="op">-</span>tlh_candidates[<span class="st">"Unrealized Gain/Loss"</span>] <span class="op">*</span> tlh_candidates[<span class="st">"Tax Rate"</span>]    <span class="cf">return</span> tlh_candidatesdef finalize_tlh_recommendation(tlh_candidates, realized_gains, max_loss_offset<span class="op">=</span><span class="dv">3000</span>):    total_offset_limit <span class="op">=</span> realized_gains <span class="op">+</span> max_loss_offset <span class="cf">if</span> realized_gains <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> max_loss_offset    remaining_offset <span class="op">=</span> total_offset_limit    tlh_candidates[<span class="st">"Tax Savings per Loss"</span>] <span class="op">=</span> tlh_candidates[<span class="st">"Tax Savings"</span>] <span class="op">/</span> <span class="bu">abs</span>(tlh_candidates[<span class="st">"Unrealized Gain/Loss"</span>])    tlh_candidates <span class="op">=</span> tlh_candidates.sort_values(        by<span class="op">=</span>[<span class="st">"Tax Savings"</span>, <span class="st">"Tax Savings per Loss"</span>], ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">False</span>]    )    tlh_candidates[<span class="st">"Recommended"</span>] <span class="op">=</span> <span class="va">False</span>    tlh_candidates[<span class="st">"Partial Quantity"</span>] <span class="op">=</span> <span class="dv">0</span>    <span class="cf">for</span> i, row <span class="kw">in</span> tlh_candidates.iterrows():        <span class="cf">if</span> remaining_offset <span class="op">&lt;=</span> <span class="dv">0</span>:            <span class="cf">break</span>        <span class="co"># Calculate unrealized loss for the recommended quantity        unrealized_loss_per_unit = abs(row["Unrealized Gain/Loss"] / row["Quantity"])        max_quantity = int(remaining_offset / unrealized_loss_per_unit)        if abs(row["Unrealized Gain/Loss"]) &lt;= remaining_offset:            tlh_candidates.at[i, "Recommended"] = True            tlh_candidates.at[i, "Partial Quantity"] = row["Quantity"]            remaining_offset -= abs(row["Unrealized Gain/Loss"])        elif max_quantity &gt; 0:            tlh_candidates.at[i, "Recommended"] = True            tlh_candidates.at[i, "Partial Quantity"] = max_quantity            remaining_offset = 0    return tlh_candidatesdef calculate_realized_gains(transactions, customer_id, tax_year):    """    Calculate realized gains for sell transactions in a given tax year using FIFO logic.    Args:        transactions (DataFrame): Full transaction data.        customer_id (str): Customer ID for filtering.        tax_year (int): Tax year for capital gains calculation.    Returns:        float: Total realized gains for the tax year.    """    # Filter transactions for the customer and the given tax year    transactions = transactions[transactions["Customer ID"] == customer_id]    transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"])    sell_transactions = transactions[        (transactions["Transaction Type"] == "Sell") &amp;        (transactions["Transaction Date"].dt.year == tax_year)    ]        # Group buy transactions for FIFO matching    buy_transactions = transactions[        (transactions["Transaction Type"] == "Buy")    ].sort_values(by="Transaction Date")    realized_gains = 0    # FIFO logic for calculating gains    for _, sell in sell_transactions.iterrows():        ticker = sell["Ticker"]        quantity_to_sell = sell["Quantity"]        sell_price = sell["Price"]        for _, buy in buy_transactions[buy_transactions["Ticker"] == ticker].iterrows():            if quantity_to_sell &lt;= 0:                break            buy_quantity = buy["Quantity"]            buy_price = buy["Price"]            matched_quantity = min(quantity_to_sell, buy_quantity)            realized_gains += (sell_price - buy_price) * matched_quantity            quantity_to_sell -= matched_quantity            # Adjust remaining buy quantity            buy_transactions.loc[buy.name, "Quantity"] -= matched_quantity    return realized_gainsdef calculate_sales_and_gains_summary(transactions, customer_id, tax_year):    """    Calculate total sales, realized gains, percent return, and top 3 stocks by return for a given tax year using FIFO logic.    Args:        transactions (DataFrame): Full transaction data.        customer_id (str): Customer ID for filtering.        tax_year (int): Tax year for calculations.    Returns:        str: Formatted summary string with sales, realized gains, percent return, and top 3 stocks.    """    # Filter transactions for the customer and the given tax year    transactions = transactions[transactions["Customer ID"] == customer_id]    transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"])    sell_transactions = transactions[        (transactions["Transaction Type"] == "Sell") &amp;        (transactions["Transaction Date"].dt.year == tax_year)    ]    # Group buy transactions for FIFO matching    buy_transactions = transactions[        (transactions["Transaction Type"] == "Buy")    ].sort_values(by="Transaction Date")    total_sales = 0    realized_gains = 0    stock_returns = []    # FIFO logic for calculating gains    for _, sell in sell_transactions.iterrows():        ticker = sell["Ticker"]        quantity_to_sell = sell["Quantity"]        sell_price = sell["Price"]        total_sale_for_ticker = 0        total_cost_for_ticker = 0        for _, buy in buy_transactions[buy_transactions["Ticker"] == ticker].iterrows():            if quantity_to_sell &lt;= 0:                break            buy_quantity = buy["Quantity"]            buy_price = buy["Price"]            matched_quantity = min(quantity_to_sell, buy_quantity)            # Calculate realized gains            realized_gains += (sell_price - buy_price) * matched_quantity            # Track sales and costs for this ticker            total_sale_for_ticker += sell_price * matched_quantity            total_cost_for_ticker += buy_price * matched_quantity            quantity_to_sell -= matched_quantity            # Adjust remaining buy quantity            buy_transactions.loc[buy.name, "Quantity"] -= matched_quantity        # Record return for the ticker if sales occurred        if total_cost_for_ticker &gt; 0:            percent_return = ((total_sale_for_ticker - total_cost_for_ticker) / total_cost_for_ticker) * 100            stock_returns.append((ticker, percent_return, total_sale_for_ticker))        # Add to total sales        total_sales += total_sale_for_ticker    # Get top 3 stocks by return    top_3_stocks = sorted(stock_returns, key=lambda x: x[1], reverse=True)[:3]    # Calculate overall percent return    overall_percent_return = ((realized_gains / total_sales) * 100) if total_sales &gt; 0 else 0    # Build the formatted summary string    summary = f"Total Sales Made: ${total_sales:,.2f}\n"    summary += f"Realized Gains: ${realized_gains:,.2f}\n"    summary += f"Overall Percent Return: {overall_percent_return:.2f}%\n"    summary += "Top 3 Stocks by Return:\n"    for ticker, percent_return, total_sales in top_3_stocks:        summary += f"  {ticker}: {percent_return:.2f}% return, Total Sales: ${total_sales:,.2f}\n"    return summary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wash-sale-detection" class="level3">
+<h3 class="anchored" data-anchor-id="wash-sale-detection">Wash Sale Detection</h3>
+<div id="cef5dcad" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> detect_wash_sales(transactions, tlh_candidates):    <span class="st">"""    Detect wash sale violations for TLH candidates and provide detailed warnings.    Args:        transactions (DataFrame): Transaction data containing all trades.        tlh_candidates (DataFrame): TLH candidates being evaluated.    Returns:        Tuple: (List of detailed warnings, List of tickers with wash-sale violations)    """</span>    warnings <span class="op">=</span> []    wash_sale_tickers <span class="op">=</span> []  <span class="co"># To store tickers with wash sale warnings    for _, row in tlh_candidates.iterrows():        ticker = row["Ticker"]        sale_date = datetime.now()  # Assume current date for sale        # Filter transactions for recent buys within the last 30 days        recent_buys = transactions[            (transactions["Ticker"] == ticker) &amp;            (transactions["Transaction Type"] == "Buy") &amp;            (transactions["Transaction Date"] &gt;= sale_date - timedelta(days=30))        ]        if not recent_buys.empty:            # Find the most recent purchase date            most_recent_buy_date = recent_buys["Transaction Date"].max()            safe_sell_date = most_recent_buy_date + timedelta(days=31)            warnings.append(                f"Wash sale warning: Recent buy detected for {ticker} on {most_recent_buy_date.date()}. "                f"You can safely sell after {safe_sell_date.date()} to avoid violations."            )            wash_sale_tickers.append(ticker)  # Add ticker to the list    return warnings, wash_sale_tickers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="reinvestment-recommendation-system" class="level3">
+<h3 class="anchored" data-anchor-id="reinvestment-recommendation-system">Reinvestment Recommendation System</h3>
+<div id="4554792a" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> identify_stocks_to_sell(portfolio, customer_preferences):    <span class="st">"""    Identify stocks to sell based on risk tolerance, sectors, and investment goals.    """</span>    <span class="co"># Extract preferences    risk_tolerance = customer_preferences["Risk Tolerance"]    preferred_sectors = customer_preferences["Preferred Sectors"]    # Convert sectors to a list if it's a string    if isinstance(preferred_sectors, str):        preferred_sectors = [sector.strip() for sector in preferred_sectors.split(",")]    # Filter based on risk tolerance    if risk_tolerance == "Low":        portfolio = portfolio[portfolio["Beta"] &lt; 1]    elif risk_tolerance == "Moderate":        portfolio = portfolio[(portfolio["Beta"] &gt;= 1) &amp; (portfolio["Beta"] &lt;= 1.5)]    elif risk_tolerance == "High":        portfolio = portfolio[portfolio["Beta"] &gt; 1.5]    # Filter non-preferred sectors    portfolio = portfolio[~portfolio["Sector"].isin(preferred_sectors)]    return portfoliodef recommend_reinvestment_stocks_with_details(available_balance, stock_data, wash_sale_tickers, customer_preferences, max_stock_allocation_pct=0.15, max_sector_allocation_pct=0.30):    """    Recommend stocks for reinvestment while providing detailed information like purchase quantity, current price, YTD returns, and other metrics.    """    latest_prices = get_latest_prices(historical_prices)    latest_prices = pd.DataFrame.from_dict(latest_prices, orient="index", columns=["Current Price"]).reset_index().rename(columns={"index": "Ticker"})    stock_data = stock_data.merge(latest_prices, on="Ticker", how="left")    # Exclude wash-sale-triggering stocks    stock_data = stock_data[~stock_data["Ticker"].isin(wash_sale_tickers)]        stock_data = stock_data[stock_data["YTD Return (%)"] &gt; 0]    # Convert preferred sectors to a list if it's a string    preferred_sectors = customer_preferences["Preferred Sectors"]    if isinstance(preferred_sectors, str):        preferred_sectors = [sector.strip() for sector in preferred_sectors.split(",")]    # Filter by sector preference    stock_data = stock_data[stock_data["Sector"].isin(preferred_sectors)]    # Filter by risk tolerance    risk_tolerance = customer_preferences["Risk Tolerance"]    if risk_tolerance == "Low":        stock_data = stock_data[stock_data["Beta"] &lt; 1]    elif risk_tolerance == "Moderate":        stock_data = stock_data[(stock_data["Beta"] &gt;= 1) &amp; (stock_data["Beta"] &lt;= 1.5)]    elif risk_tolerance == "High":        stock_data = stock_data[stock_data["Beta"] &gt; 1.5]    # Rank stocks by customer goals    if customer_preferences["Investment Goals"] == "Dividend Income":        stock_data = stock_data.sort_values(by="Dividend Yield (%)", ascending=False)    elif customer_preferences["Investment Goals"] == "Growth":        stock_data = stock_data.sort_values(by="Growth Rate", ascending=False)    # Allocation logic    allocation = []    sector_allocations = {}    for _, row in stock_data.iterrows():        # Calculate max allocations        max_stock_allocation = available_balance * max_stock_allocation_pct        max_sector_allocation = available_balance * max_sector_allocation_pct        # Get current sector allocation        current_sector_allocation = sector_allocations.get(row["Sector"], 0)        remaining_sector_allocation = max_sector_allocation - current_sector_allocation        # Allocate funds while respecting constraints        allocation_amount = min(max_stock_allocation, remaining_sector_allocation, available_balance)        if allocation_amount &gt; 0:            # Calculate purchase quantity            purchase_quantity = allocation_amount // row["Current Price"]            allocation_amount = purchase_quantity * row["Current Price"]  # Recalculate based on whole shares            allocation.append({                "Ticker": row["Ticker"],                "Allocation": allocation_amount,                "Purchase Quantity": purchase_quantity,                "Current Price": row["Current Price"],                "YTD Return": row["YTD Return (%)"],                "P/E Ratio": row.get("P/E Ratio", "N/A"),                "Market Cap (B)": row.get("Market Cap (B)", "N/A"),                "Beta": row.get("Beta", "N/A"),                "52-Week High": row.get("52-Week High", "N/A"),                "52-Week Low": row.get("52-Week Low", "N/A"),                "Growth Rate": row.get("Growth Rate","N/A"),                "Projected Growth": allocation_amount * (1 + row["Growth Rate"])            })            # Update balances            available_balance -= allocation_amount            sector_allocations[row["Sector"]] = current_sector_allocation + allocation_amount        # Stop if all funds are allocated        if available_balance &lt;= 0:            break    # Redistribute residual balance proportionally if any remains    if available_balance &gt; 0:        total_allocation = sum(a["Allocation"] for a in allocation)        for entry in allocation:            proportional_addition = (entry["Allocation"] / total_allocation) * available_balance            entry["Allocation"] += proportional_addition            entry["Purchase Quantity"] += int(proportional_addition // entry["Current Price"])            entry["Projected Growth"] = entry["Allocation"] * (1 + stock_data.loc[stock_data["Ticker"] == entry["Ticker"], "Growth Rate"].values[0])        # Filter out zero-allocation stocks    allocation_df = pd.DataFrame(allocation)    allocation_df = allocation_df[allocation_df["Allocation"] &gt; 0]    allocation_df = allocation_df.drop(columns=["Allocation"], errors="ignore")    return allocation_df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="execute-code-and-convert-all-data-to-json-for-watsonx-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="execute-code-and-convert-all-data-to-json-for-watsonx-discovery">Execute code and Convert all data to JSON for Watsonx Discovery</h3>
+<div id="0a520573" class="cell" data-scrolled="true" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pdimport jsonimport re<span class="co"># Assume all necessary modules and functions are already imported# and original_transactions, customer_profiles, historical_prices,# tax_rates, stock_expanded_data, etc., are already defined.all_customers_data = []# Function to reset data before processing each customerdef reset_data():    global transactions    transactions = original_transactions.copy()    # Repeat for other DataFrames if necessary# Function to process a single customerdef process_customer(customer_id):    # Reset data before processing each customer    reset_data()        tax_year = 2024  # Use the current or target tax year    # Extract the customer's profile    customer_profile = customer_profiles[customer_profiles["Customer ID"] == customer_id].iloc[0]        # Extract user preferences    risk_tolerance = customer_profile["Risk Tolerance"]    preferred_sectors = customer_profile["Preferred Sectors"].split(", ")    investment_goals = customer_profile["Investment Goals"]    current_prices = get_latest_prices(historical_prices)    income = customer_profile["Annual Income"]        # Calculate the customer's portfolio    portfolio = compute_fifo_portfolio_with_metrics(transactions, current_prices, customer_id)        # Identify TLH candidates    tlh_candidates = identify_tlh_candidates(portfolio)        # Calculate tax savings for TLH candidates    tlh_candidates_with_savings = calculate_tax_savings(tlh_candidates, income, tax_rates)        # Calculate realized gains dynamically from transactions    realized_gains = calculate_realized_gains(transactions, customer_id, tax_year)        # Generate final TLH recommendations    final_tlh_recommendations = finalize_tlh_recommendation(        tlh_candidates_with_savings,        realized_gains,        max_loss_offset=3000    )        # Detect potential wash sale violations    wash_sale_warnings, wash_sale_tickers = detect_wash_sales(transactions, tlh_candidates_with_savings)        # Calculate the sale proceeds for reinvestment    final_tlh_recommendations["Sale Proceeds"] = (        final_tlh_recommendations["Partial Quantity"] * final_tlh_recommendations["Current Price"]    )    available_balance = final_tlh_recommendations["Sale Proceeds"].sum()        # Identify stocks to sell (if applicable)    # stocks_to_sell = identify_stocks_to_sell(stock_expanded_data, customer_profile)        # Filter stocks based on customer preferences    recommended_stocks = recommend_reinvestment_stocks_with_details(        available_balance, stock_expanded_data, wash_sale_tickers, customer_profile    )        # --- Portfolio Summary ---    portfolio_updated = portfolio.drop(columns=["Holding Period (Days)"])    going_well = portfolio_updated[portfolio_updated["Unrealized Gain/Loss"] &gt; 0]        going_bad = portfolio_updated[portfolio_updated["Unrealized Gain/Loss"] &lt; 0].copy()    going_bad['Unrealized Gain/Loss'] = going_bad['Unrealized Gain/Loss'].abs()    going_bad.rename(columns={'Unrealized Gain/Loss':'Unrealized Loss'}, inplace=True)    going_well.rename(columns={'Unrealized Gain/Loss':'Unrealized Gain'}, inplace=True)        # Calculate Total Investments    portfolio["Initial Investment"] = portfolio["Purchase Price"] * portfolio["Quantity"]    portfolio["Current Value"] = portfolio["Current Price"] * portfolio["Quantity"]    total_initial_investment = portfolio["Initial Investment"].sum()    total_current_value = portfolio["Current Value"].sum()    net_unrealized_gain_loss_percent = (        (portfolio["Unrealized Gain/Loss"].sum() / portfolio["Initial Investment"].sum()) * 100    ).round(2)        # Sales made in the tax year    customer_transactions = transactions[transactions["Customer ID"] == customer_id].copy()    customer_transactions["Transaction Date"] = pd.to_datetime(customer_transactions["Transaction Date"])    sell_transactions = customer_transactions[        (customer_transactions["Transaction Type"] == "Sell") &amp;        (customer_transactions["Transaction Date"].dt.year == tax_year)    ]        # Calculate sales and gains summary    summary = calculate_sales_and_gains_summary(transactions, customer_id, tax_year)    total_sales = re.search(r"Total Sales Made: \$(\d[\d,\.]*)", summary).group(1)    realized_gains_str = re.search(r"Realized Gains: \$(\d[\d,\.]*)", summary).group(1)    overall_percent_return = re.search(r"Overall Percent Return: ([\d\.]*)%", summary).group(1)    top_stocks = re.findall(r"(\w+): ([\d\.]+)% return, Total Sales: \$(\d[\d,\.]*)", summary)    realized_gains_float = float(realized_gains_str.replace(",", "")) if isinstance(realized_gains_str, str) else float(realized_gains_str)        # --- Tax Loss Harvesting Analysis ---    # Generate TLH Table with Additional Columns    tlh_table = final_tlh_recommendations[[        "Ticker", "Unrealized Gain/Loss", "Partial Quantity", "Current Price", "Recommended", "Sale Proceeds"    ]].copy()        # Calculate Absolute Losses    tlh_table["Unrealized Gain/Loss"] = tlh_table["Unrealized Gain/Loss"].abs()    tlh_table.rename(columns={        "Unrealized Gain/Loss": "Losses",        "Partial Quantity": "Quantity to Sell"    }, inplace=True)        # Calculate Total Tax Savings    total_tax_savings = final_tlh_recommendations[final_tlh_recommendations["Recommended"]]["Tax Savings"].sum()        # Calculate Total Sale Proceeds from TLH Sales    total_sale_proceeds = final_tlh_recommendations[final_tlh_recommendations["Recommended"]]["Sale Proceeds"].sum()        # Generate Wash Sale Output    wash_sale_output = "\n".join(wash_sale_warnings) if wash_sale_warnings else "No wash sale warnings."        # Calculate Total Offset Limit    total_offset_limit = realized_gains_float + 3000 if realized_gains_float &gt; 0 else 3000        # --- Reinvestment Recommendations ---    # Reinvest amount    total_investment = (recommended_stocks["Purchase Quantity"] * recommended_stocks["Current Price"]).sum()        # Add Allocation (%) column    recommended_stocks["Allocation (%)"] = (        (recommended_stocks["Purchase Quantity"] * recommended_stocks["Current Price"]) / total_investment * 100    )        # Calculate Weighted YTD Return    weighted_ytd_return = (        (recommended_stocks["Purchase Quantity"] * recommended_stocks["YTD Return"]).sum() /        recommended_stocks["Purchase Quantity"].sum()    )        # Calculate Portfolio Beta    portfolio_beta = (        (recommended_stocks["Purchase Quantity"] * recommended_stocks["Beta"]).sum() /        recommended_stocks["Purchase Quantity"].sum()    )        # Calculate Average P/E Ratio    average_pe_ratio = recommended_stocks["P/E Ratio"].mean()        # Calculate Average Growth Rate    average_growth_rate = recommended_stocks["Growth Rate"].mean()        # Create the Recommendations Table    recommendations_table = recommended_stocks[        ["Ticker", "Purchase Quantity", "Current Price", "YTD Return", "Beta", "P/E Ratio", "Growth Rate", "Allocation (%)"]    ].copy()        # Round numbers where needed    recommendations_table["Allocation (%)"] = recommendations_table["Allocation (%)"].round(2)    weighted_ytd_return = round(weighted_ytd_return, 2)    portfolio_beta = round(portfolio_beta, 2)    average_pe_ratio = round(average_pe_ratio, 2)    average_growth_rate = round(average_growth_rate, 2)    recommendations_table["YTD Return"] = recommendations_table["YTD Return"].round(2)    recommendations_table["Growth Rate"] = recommendations_table["Growth Rate"].round(2)    recommendations_table["Current Price"] = recommendations_table["Current Price"].round(2)    recommendations_table["P/E Ratio"] = recommendations_table["P/E Ratio"].round(2)    recommendations_table["Beta"] = recommendations_table["Beta"].round(2)        # --- Executive Summary ---    net_unrealized_gain_loss = portfolio["Unrealized Gain/Loss"].sum().round(2)    recommendations_stocks = recommended_stocks["Ticker"]    expected_average_growth_rate = average_growth_rate        # --- Convert all data to JSON ---    output_data = {        "Customer ID": customer_id,        "Executive Summary": {            "Customer Profile": {                "Risk Tolerance": customer_profile["Risk Tolerance"],                "Preferred Sectors": customer_profile["Preferred Sectors"],                "Investment Goals": customer_profile["Investment Goals"],            },            "Portfolio Summary": {                "Total Current Value": round(total_current_value, 2),                "Net Unrealized Gain/Loss": round(net_unrealized_gain_loss, 2),            },            "Tax-Loss Harvesting": {                "Total Tax Savings": round(total_tax_savings, 2),                "Reinvestment Amount": round(total_sale_proceeds, 2),            },            "Reinvestment Recommendations": {                "Recommended Stocks": recommendations_stocks.tolist(),                "Expected Average Growth Rate %": round(expected_average_growth_rate, 2),            },        },        "Portfolio Summary": {            "Total Initial Investment": round(total_initial_investment, 2),            "Total Current Value": round(total_current_value, 2),            "Net Unrealized Gain/Loss Percent": round(net_unrealized_gain_loss_percent, 2),            "Going Bad Investments": [                {k: round(v, 2) if isinstance(v, (int, float)) else v for k, v in record.items()}            for record in going_bad.to_dict(orient="records")            ],            "Going Well Investments": [                {k: round(v, 2) if isinstance(v, (int, float)) else v for k, v in record.items()}            for record in going_well.to_dict(orient="records")            ],            "Sales Analysis": {                "Total Sales Made": round(float(total_sales.replace(",", "")), 2),                "Realized Gains": round(realized_gains_float, 2),                "Overall Percent Return": round(float(overall_percent_return), 2),                "Top Stocks by Return": [                    {                        "Ticker": stock[0],                        "Return Percent": round(float(stock[1]), 2),                        "Total Sales": round(float(stock[2].replace(",", "")), 2),                    }                    for stock in top_stocks                ],            },        },        "Tax Loss Harvesting Analysis": {            "Table": [                {k: round(v, 2) if isinstance(v, (int, float)) else v for k, v in record.items()}            for record in tlh_table.to_dict(orient="records")            ],            "Total Tax Savings": round(total_tax_savings, 2),            "Total Sale Proceeds from TLH Sales": round(total_sale_proceeds, 2),            "Wash Sale Warnings": wash_sale_warnings,        },        "Reinvestment Recommendations": {            "Customer Profile": {                "Risk Tolerance": customer_profile["Risk Tolerance"],                "Preferred Sectors": customer_profile["Preferred Sectors"],                "Investment Goals": customer_profile["Investment Goals"],            },            "Table": [                {k: round(v, 2) if isinstance(v, (int, float)) else v for k, v in record.items()}            for record in recommendations_table.to_dict(orient="records")            ],            "New Portfolio Summary": {                "Total Investment": round(total_investment, 2),                "Weighted YTD Return": weighted_ytd_return,                "Portfolio Beta": portfolio_beta,                "Average P/E Ratio": average_pe_ratio,                "Expected Average Growth Rate": average_growth_rate,            },        },    }        # Instead of writing to a file, append the output_data to the list    all_customers_data.append(output_data)        print(f"Processed customer {customer_id}")# Get a list of all customer IDscustomer_ids = customer_profiles["Customer ID"].unique()# Loop over all customer IDs and process each onefor customer_id in customer_ids:    process_customer(customer_id)# After processing all customers, write the accumulated data to a single JSON filewith open("all_customers_report.json", "w") as file:    json.dump(all_customers_data, file, indent=4)print("All customer data has been written to 'all_customers_report.json'")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Processed customer C001
+Processed customer C002
+All customer data has been written to 'all_customers_report.json'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/wsuser/ipykernel_438/2890460161.py:63: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"])
+/tmp/wsuser/ipykernel_438/3882620736.py:77: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  going_well.rename(columns={'Unrealized Gain/Loss':'Unrealized Gain'}, inplace=True)
+/tmp/wsuser/ipykernel_438/2890460161.py:112: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"])
+/tmp/wsuser/ipykernel_438/2890460161.py:63: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"])
+/tmp/wsuser/ipykernel_438/3882620736.py:77: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  going_well.rename(columns={'Unrealized Gain/Loss':'Unrealized Gain'}, inplace=True)
+/tmp/wsuser/ipykernel_438/2890460161.py:112: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  transactions["Transaction Date"] = pd.to_datetime(transactions["Transaction Date"])</code></pre>
+</div>
+</div>
+<div id="441d7321-fe91-450b-8a16-793436e2f3e7" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jsonimport ibm_boto3from ibm_botocore.client <span class="im">import</span> Config<span class="co"># IBM COS Credentials and ConfigurationsCOS_API_KEY = "RuSq2hb5DI8kOl1ZznOxQHx3igYJObJF-yTHDDkNi55E"  # Replace with your IBM COS API KeyCOS_ENDPOINT = "https://s3.direct.us-south.cloud-object-storage.appdomain.cloud"  # Replace with your endpointCOS_BUCKET_NAME = "007tlhdata"  # Replace with your bucket nameCOS_OBJECT_NAME = "json_customer_data/all_customers_data.json"  # Name of the file to be saved in COS# Initialize COS clientcos_client = ibm_boto3.client(    service_name="s3",    ibm_api_key_id=COS_API_KEY,    ibm_auth_endpoint="https://iam.cloud.ibm.com/identity/token",    config=Config(signature_version="oauth"),    endpoint_url=COS_ENDPOINT,)# Convert JSON to a stringjson_data = json.dumps(all_customers_data)# Upload the JSON file to IBM COStry:    response = cos_client.put_object(        Bucket=COS_BUCKET_NAME,        Key=COS_OBJECT_NAME,        Body=json_data,        ContentType="application/json",    )    print(f"Upload Successful! ETag: {response['ETag']}")except Exception as e:    print(f"Error uploading file: {e}")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Upload Successful! ETag: "1abb7028705e029d39029b84725f09f8"</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ibm-client-engineering\.github\.io\/007-AI-Financial-Advisor\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<div class="listitem">
+<a href="https://ibm.com" rel="noopener noreferrer" class="footerLogo"><img src="https://www.ibm.com/brand/experience-guides/developer/8f4e3cc2b5d52354a6d43c8edba1e3c9/02_8-bar-reverse.svg" alt="IBM Logo" class="footer__logo themedComponent_node_modules-@docusaurus-theme-common-lib-components-ThemedComponent-styles-module themedComponent--light_node_modules-@docusaurus-theme-common-lib-components-ThemedComponent-styles-module" width="250" height="250"></a>
+</div>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
