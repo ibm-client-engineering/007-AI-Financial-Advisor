@@ -1,0 +1,71 @@
+project:
+  type: website
+  output-dir: docs
+
+language: 
+      search-text-placeholder: Search
+
+website:
+  title: Project Name
+  favicon: images/bee.png
+  page-navigation: true
+  search: 
+    type: textbox
+    location: navbar
+  navbar:
+    pinned: true
+    logo: images/IBMlogo.png
+    right: 
+      - icon: github
+        href: https://github.com/ibm-client-engineering
+      - icon: linkedin
+        menu:
+          - text: Share on your LinkedIn
+            href:  https://www.linkedin.com/company/ibm/
+          - text:  IBM LinkedIn
+            href:  https://www.linkedin.com/company/ibm/
+  sidebar:
+    - title: "Contents"
+      style: docked
+      collapse-level: 1
+      search: false
+      contents:
+        - href: index.qmd
+          text: Problem Definition
+        - section: Solution Overview
+          contents:
+          - text: Prepare
+            href: prepare.qmd
+          - text: Environment 
+            href: environment.qmd
+          - text: Troubleshooting
+            href: troubleshooting.qmd
+        - section: Implementation Methodology
+          contents:
+          - text: Step One
+            href: stepone-imp.qmd
+          - text: Step Two
+            href: steptwo-imp.qmd
+          - text: Step Three
+            href: stepthree-imp.qmd
+        - text: Key Takeaways
+          href: key-takeaway.qmd
+
+
+  page-footer: 
+    background: black
+    left: 
+        <div class="listitem CEText"><a autoid="IBM Client Engineering" href="https://www.ibm.com/client-engineering?mhsrc=ibmsearch_a&mhq=client%20engineering" role="listitem" size=""><!--?lit$182463756$-->IBM Client Engineering</a></div>    
+        <div class="listitem CEText"><a autoid="IBM Client Engineering" href="https://ibm-client-engineering.github.io/ce-solutions-hub/" role="listitem" size=""><!--?lit$182463756$-->IBM Solutions Hub</a></div>    
+        
+    center: 
+        <div class ="listitem"><a href="https://ibm.com" rel="noopener noreferrer" class="footerLogo"><img src="https://www.ibm.com/brand/experience-guides/developer/8f4e3cc2b5d52354a6d43c8edba1e3c9/02_8-bar-reverse.svg" alt="IBM Logo" class="footer__logo themedComponent_node_modules-@docusaurus-theme-common-lib-components-ThemedComponent-styles-module themedComponent--light_node_modules-@docusaurus-theme-common-lib-components-ThemedComponent-styles-module" width="250" height="250"></a></div>
+    
+format:
+  html:
+    theme: custom.scss
+    toc: true
+    toc-location: right
+
+
+
