@@ -6,10 +6,16 @@ format: html
 ### Step Three Implementation
 
 Final implementation involves setting up professional-grade output generation using:
+
 - Watsonx Orchestrate custom skill for formatting and branding.
 - PDF Generation Application in IBM Code Engine.
 - Dynamic tables for financial clarity.
 - AI-driven natural language understanding for financial queries.
+
+<img src="/images/007/IMPLEMENTATION/007_Data_Integration.png" alt="data" class="responsive-img">
+
+<img src="/images/007/IMPLEMENTATION/007_Prompt_Streaming.png" alt="data" class="responsive-img">
+
 
 #### **IBM Documentation Links**
 - [Code Engine Guide](https://cloud.ibm.com/docs/codeengine){target="_blank"}

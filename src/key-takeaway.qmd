@@ -17,6 +17,8 @@ Implementation best practices include:
 3. Leveraging open-source starter kits for BYOM deployment.
 4. Maintaining modular architecture for scalability and efficiency.
 
+<img src="/images/007/IMPLEMENTATION/007_Team_Wokrshop.png" alt="data" class="responsive-img">
+
 #### **Reusable Assets**
 Include:
 - Yahoo Finance API code

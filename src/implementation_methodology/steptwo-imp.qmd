@@ -6,10 +6,13 @@ format: html
 ### Step Two Implementation
 
 The second phase focuses on deploying AI models and orchestration workflows. This includes:
+
 - Custom Hugging Face model deployment in watsonx.ai.
 - Integration of watsonx components via API controls.
 - Configuration of prebuilt and custom workflows for TLH reporting.
 - Development of modular skills for PDF generation and email workflows.
+
+<img src="/images/007/IMPLEMENTATION/007_BYOM.png" alt="data" class="responsive-img">
 
 #### **Documentation Links**
 - [Hugging Face Integration Guide](https://huggingface.co/docs){target="_blank"}
