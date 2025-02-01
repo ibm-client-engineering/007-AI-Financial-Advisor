@@ -342,3 +342,11 @@ a[role=listitem] {
     color: #f7f2f2; /* Light gray logo color */
     vertical-align: top; /* Aligns logo to the top */
 }
+
+/* Responsive Images */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block; // Optional: ensures spacing consistency
+  }
+  

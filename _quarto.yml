@@ -18,13 +18,13 @@ website:
     logo: images/IBMlogo.png
     right: 
       - icon: github
-        href: https://github.com/ibm-client-engineering/007-AI-Financial-Advisor
+        href: https://github.com/ibm-client-engineering/solution-007-AI-Financial-Advisor
       - icon: linkedin
         menu:
           - text: Share on your LinkedIn
-            href:  http://linkedin.com/post
+            href:  https://www.linkedin.com/shareArticle?mini=true&url=https://ibm-client-engineering.github.io/solution-007-AI-Financial-Advisor/&title=007%20AI%20Financial%20Advisor&summary=Check%20out%20this%20guide%20on%20building%20a%20007%20agent%20for%20financial%20advisors%20using%20multiple%20large%20language%20models%20and%20custom%20automations%20including%20report%20generation%20and%20email%20automation.&source=IBM
           - text:  IBM LinkedIn
-            href:  https://www.linkedin.com/company/ibm/
+            href:  https://www.linkedin.com/company/cs-tech-expert-labs
   sidebar:
     - title: "Contents"
       style: docked
@@ -49,6 +49,8 @@ website:
             href: src/implementation_methodology/steptwo-imp.qmd
           - text: Step Three
             href: src/implementation_methodology/stepthree-imp.qmd
+        - text: Demo Video
+          href: src/demo-video.qmd            
         - text: Key Takeaways
           href: src/key-takeaway.qmd
 
@@ -64,6 +66,3 @@ format:
     theme: src/custom.scss
     toc: true
     toc-location: right
-
-
-

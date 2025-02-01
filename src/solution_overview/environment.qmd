@@ -7,8 +7,8 @@ format: html
 
 The environment setup includes external integrations with Hugging Face, Gmail, and Yahoo Finance API for enhanced functionality. The system employs Elastic Search indexing for sub-second queries and data enrichment pipelines for advanced metrics. The processing environment includes IBM Code Engine for containerized PDF generation and watsonx.ai for hosting scalable models.
 
-<img src="../../images/007/Resource_List.png" alt="architecture" width="800">
+<img src="../../images/007/Resource_List.png" alt="resources" class="responsive-img">
 
 The environment was set up via IBM Cloud, and the technology leveraged includes watsonx Orchestrate, watsonx.ai, watsonx Discovery (Databases for ElasticSearch), Code Engine and Kibana. Included screenshots of the resources.
 
-<img src="../../images/007/Resource_Cont.png" alt="architecture" width="800">
+<img src="../../images/007/Resource_Cont.png" alt="resources" class="responsive-img">

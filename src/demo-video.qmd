@@ -1,0 +1,25 @@
+---
+title: "Demo Video Walkthrough"
+format: html
+---
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe src="https://player.vimeo.com/video/1041803978?h=881d636822" 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+          frameborder="0" 
+          allow="autoplay; fullscreen; picture-in-picture" 
+          allowfullscreen>
+  </iframe>
+</div>
+
+
+An end-to-end walkthrough of the live app with key talking points on features and functionality.
+
+## Key Features & Walkthrough
+
+- **Overview:** A concise demo showcasing the live app’s end-to-end workflow, from AI-powered financial analysis to automated report generation and email notifications.
+- **Feature 1:** Automated analysis that processes financial data and generates actionable insights.
+- **Feature 2:** An intuitive, interactive interface enabling quick access to key metrics and reports.
+- **Architecture & Implementation:** Highlights a robust four-layer solution with integrated workflows (team workshops, prompt engineering, data integration, and orchestration).
+- **Next Steps & Takeaways:** Accelerate your deployment with IBM’s technical community. <a href="https://www.linkedin.com/in/raffi-khatchadourian/" target="_blank">Request a full hands-on demo with Raffi</a> via LinkedIn today!
+
