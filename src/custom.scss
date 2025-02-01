@@ -380,3 +380,22 @@ a[role=listitem] {
         max-width: 80%;  /* Adjust percentage as needed */
     }
 }
+
+@media (max-width: 768px) {
+    .nav-page-text {
+      font-size: 1.2rem;  /* or whatever size is comfortable on mobile */
+    }
+    .nav-page {
+      flex-direction: column;   /* Place “previous” and “next” on separate lines if you prefer */
+      align-items: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column; 
+      align-items: flex-start; 
+      padding: 0.5rem; 
+    }
+  }
+  
