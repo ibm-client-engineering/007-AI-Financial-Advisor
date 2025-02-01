@@ -21,10 +21,14 @@ format: html
 ```
 <br>
 ---
-Description: "Project Name"
+Description: "An enterprise-grade guide to building an AI-driven financial advisory solution."
 ---
 
 <img src="/images/007/007_Mac.png" alt="prototype" class="responsive-img">
+
+## Getting Started / Prerequisites
+
+Before diving in, ensure you have access to IBM Cloud, the necessary API keys, and a basic understanding of AI and data integration. This guide is designed for developers ready to implement a real-world solution with clear, step-by-step instructions.
 
 ## The Why
 
@@ -38,10 +42,10 @@ Financial advisors operate in a rapidly changing regulatory and market environme
 
 ### Problem Details
 
-Key challenges include navigating complex tax regulations—where staying updated and spotting tax optimization opportunities requires vigilance—and managing portfolio diversification risks, as aggressive tax-loss harvesting can inadvertently lead to asset concentration and jeopardize future returns. Advisors must also balance strategic planning with reactive market adjustments, all while struggling to keep clients informed in an environment that demands continuous education and rapid responses. Further complications arise from market volatility, where fluctuating asset prices make identifying optimal trading windows difficult, and wash-sale restrictions that can impede tax-loss harvesting efforts. High-return solutions for these issues include reducing the risk of regulatory violations by proactively tracking changes in compliance rules and using automation to deliver personalized, timely insights.
+Advisors face issues like keeping up with tax regulations, managing portfolio diversification, and timely communication—all compounded by market volatility and regulatory risks. This guide outlines how automation and AI can help mitigate these challenges.
 
 <img src="/images/007/Use_Cases.png" alt="matrix" class="responsive-img">
 
 ### Additional Context
 
-This set of challenges and potential solutions emerged from a feasibility and value assessment meant to prioritize the most impactful initiatives for financial advisors. By focusing on areas with both high business value and viable implementation paths—like automated wash-sale detection, dynamic portfolio adjustments, and tailored tax-harvesting reports—advisors can more effectively align with regulatory requirements, optimize investment outcomes, and maintain client confidence. This feasibility matrix was done using a Mural board for a discovery workshop and local LLMs including Llama 3.2 and Granite 3.0 to gather output on the key challenges and high ROI areas to focus on for AI for financial advisors.
+These challenges were identified during a feasibility assessment using local LLMs (e.g., Llama 3.2, Granite 3.0 via ollama) and collaborative workshops. The goal is to streamline operations, reduce compliance risks, and augment financial advisor processes with AI and automation.

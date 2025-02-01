@@ -1,21 +1,24 @@
 ---
-title: "Step Three"
+title: "Step Three: Troubleshooting & FAQ"
 format: html
 ---
 
-### Step Three Solution
+### Troubleshooting & Common Issues
+
+This section covers typical challenges and their solutions:
+
+1. **Model Deployment Challenges in watsonx.ai Runtime:**  
+   - **Solution:** Verify API key permissions and ensure proper IAM configuration in IBM Cloud.
+2. **Data Ingestion Errors in ElasticSearch:**  
+   - **Solution:** Check bucket endpoints and credentials in your Cloud Object Storage settings.
 
 The solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.
 
-<img src="/images/007/IMPLEMENTATION/007_AIOps.png" alt="AIOps" class="responsive-img">
+<img src="/images/007/IMPLEMENTATION/007_AIOps.png" alt="AIOps Modular Architecture" class="responsive-img">
 
-#### **Common Issues and Solutions**
-1. **Problem:** Model deployment fails in watsonx.ai Runtime.
-   - **Solution:** Verify API key permissions in IBM Cloud IAM settings.
-2. **Problem:** Data ingestion errors in ElasticSearch.
-   - **Solution:** Validate bucket endpoints and credentials in IBM Cloud Object Storage configuration.
+#### IBM Documentation Links for Troubleshooting
 
-#### **Documentation Links**
-- [GitHub Workflow Management Documentation](https://docs.github.com/en/actions){target="_blank"}
-- [watsonx Discovery Troubleshooting Guide](https://www.ibm.com/docs/en/watsonx/watson-discovery){target="_blank"}
-
+- **GitHub Workflow Management:**  
+  [GitHub Actions Documentation](https://docs.github.com/en/actions){target="_blank"}
+- **watsonx Discovery Troubleshooting:**  
+  [watsonx Discovery Troubleshooting Guide](https://www.ibm.com/docs/en/watsonx/watson-discovery){target="_blank"}

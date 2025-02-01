@@ -1,24 +1,28 @@
 ---
-title: "Step Two"
+title: "Step Two: Environment Setup"
 format: html
 ---
 
-### Step Two Solution
+### Environment Setup & External Integrations
 
-The environment setup includes external integrations with Hugging Face, Gmail, and Yahoo Finance API for enhanced functionality. The system employs Elastic Search indexing for sub-second queries and data enrichment pipelines for advanced metrics. The processing environment includes IBM Code Engine for containerized PDF generation and watsonx.ai for hosting scalable models.
+In this phase, we configure the environment by integrating essential external services:
 
-<img src="/images/007/Resource_List.png" alt="resources" class="responsive-img">
+- **Data Sources & APIs:**  
+  Integration with Hugging Face for AI model hosting, Gmail for email automation, and Yahoo Finance for real-time data.
+- **Infrastructure:**  
+  Use of ElasticSearch for fast querying and IBM Code Engine for containerized PDF generation.
 
-The environment was set up via IBM Cloud, leveraging the following technologies:
-- **watsonx Orchestrate**: Automates workflows like TLH reporting.
-- **watsonx.ai**: Hosts scalable AI models.
-- **watsonx Discovery**: Provides advanced search capabilities (ElasticSearch).
-- **Code Engine**: Executes containerized tasks like PDF generation.
-- **Kibana**: Visualizes ElasticSearch data.
+<img src="/images/007/Resource_List.png" alt="Resource List" class="responsive-img">
 
-#### **IBM Documentation Links**
-- [IBM Cloud Object Storage Documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage){target="_blank"}
-- [IBM Code Engine Documentation](https://cloud.ibm.com/docs/codeengine){target="_blank"}
-- [ElasticSearch on IBM Cloud Documentation](https://cloud.ibm.com/docs/databases-for-elasticsearch){target="_blank"}
+The setup leverages IBM Cloud services to ensure scalable and reliable performance.
 
-<img src="/images/007/Resource_Cont.png" alt="resources" class="responsive-img">
+#### IBM Documentation Links
+
+- **IBM Cloud Object Storage:**  
+  [Cloud Object Storage Documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage){target="_blank"}
+- **IBM Code Engine:**  
+  [Code Engine Documentation](https://cloud.ibm.com/docs/codeengine){target="_blank"}
+- **ElasticSearch on IBM Cloud:**  
+  [ElasticSearch Documentation](https://cloud.ibm.com/docs/databases-for-elasticsearch){target="_blank"}
+
+<img src="/images/007/Resource_Cont.png" alt="Resource Configuration" class="responsive-img">

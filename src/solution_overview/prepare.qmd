@@ -1,16 +1,26 @@
 ---
-title: "Step One"
+title: "Step One: Prepare – Technical Architecture Overview"
 format: html
 ---
 
-### Step One Solution - The What
+### What We’re Building
 
-The solution leverages a multi-layered technical architecture combining watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The data layer ingests structured and unstructured data into Cloud Object Storage, while the processing layer utilizes Mixtral LLM for report generation and a custom BYOM Falcon Model for email generation. The integration layer uses watsonx.orchestrate with prebuilt skills for Gmail automation and custom skills for PDF generation and report formatting.
+This solution leverages a multi-layered architecture that integrates watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The architecture comprises:
 
-<img src="/images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="architecture" class="responsive-img">
+- **Data Layer:** Ingests structured and unstructured data into Cloud Object Storage.
+- **Processing Layer:** Utilizes LLMs (e.g., Mixtral, BYOM Falcon) for dynamic report and email generation.
+- **Integration Layer:** Employs watsonx.orchestrate for automating workflows such as Gmail and PDF generation.
+- **Interface Layer:** Provides an intuitive UI for real-time insights and actions.
 
-#### **IBM Documentation Links**
-- [IBM Cloud Object Storage Documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage){target="_blank"}
-- [watsonx.ai Runtime Documentation](https://cloud.ibm.com/apidocs/machine-learning){target="_blank"}
-- [watsonx Discovery Documentation](https://www.ibm.com/docs/en/watsonx/watson-discovery){target="_blank"}
-- [watsonx Orchestrate Documentation](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current){target="_blank"}
+<img src="/images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="Technical Architecture Diagram" class="responsive-img">
+
+#### IBM Documentation Links
+
+- **IBM Cloud Object Storage:**  
+  [Getting Started with IBM Cloud Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage){target="_blank"} – Learn how to provision and configure your storage service.
+- **watsonx.ai Runtime:**  
+  [watsonx.ai Runtime Documentation](https://cloud.ibm.com/apidocs/machine-learning){target="_blank"} – Details on setting up and integrating AI models.
+- **watsonx Discovery:**  
+  [watsonx Discovery Documentation](https://www.ibm.com/docs/en/watsonx/watson-discovery){target="_blank"} – Understand search and data exploration capabilities.
+- **watsonx Orchestrate:**  
+  [watsonx Orchestrate Documentation](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current){target="_blank"} – Explore automated workflow management.
