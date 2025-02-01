@@ -14,6 +14,34 @@ This solution leverages a multi-layered architecture that integrates watsonx.ai,
 
 <img src="/images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="Technical Architecture Diagram" class="responsive-img">
 
+### Environment Requirements
+
+| Component        | Version  | Purpose                   |
+|------------------|----------|---------------------------|
+| IBM Cloud CLI    | Latest   | Resource management       |
+| Docker           | 20.10+   | Container management      |
+| Python           | 3.8+     | Application runtime       |
+| Git              | 2.0+     | Version control           |
+
+### Initial Setup
+
+```bash
+# Install IBM Cloud CLI
+curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+
+# Install required IBM Cloud plugins
+ibmcloud plugin install container-service
+ibmcloud plugin install code-engine
+```
+
+### Deployment Options
+
+| Deployment Type | Infrastructure | Documentation | Use Case |
+|----------------|----------------|---------------|-----------|
+| IBM Cloud (SaaS) | Managed Services | [IBM Cloud Docs](https://cloud.ibm.com/docs){target="_blank"} | Quick start, managed scaling |
+| On-Premise | OpenShift | [Software Hub Install](https://www.ibm.com/docs/en/software-hub/5.1.x){target="_blank"} | Air-gapped environments |
+| Hybrid | Custom Mix | [Hybrid Guidelines](https://www.ibm.com/docs/en/cloud-paks/cp-data){target="_blank"} | Enterprise flexibility |
+
 #### IBM Documentation Links
 
 - **IBM Cloud Object Storage:**  

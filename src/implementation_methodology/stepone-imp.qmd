@@ -7,7 +7,7 @@ format: html
 
 Implementation begins with data management and real-time retrieval setup. This includes configuring ElasticSearch queries for data ingestion, implementing FIFO methodology for unrealized gains/losses, and establishing tax-compliant algorithms for wash-sale rules. The system uses RAG architecture integrated with watsonx Discovery for improved data processing.
 
-<img src="/images/007/IMPLEMENTATION/007_Building_Blocks.png" alt="data" class="responsive-img">
+<img src="/images/007/SOLUTION_OVERVIEW/007_Building_Blocks.png" alt="data" class="responsive-img">
 
 #### **IBM Documentation Links**
 - [ElasticSearch Query Configuration Guide](https://cloud.ibm.com/docs/databases-for-elasticsearch){target="_blank"}
