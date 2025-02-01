@@ -60,7 +60,7 @@
     "href": "src/implementation_methodology/steptwo-imp.html",
     "title": "Step Two",
     "section": "",
-    "text": "Step Two Implementation\nThe second phase focuses on deploying AI models and orchestration workflows. This includes: - Custom Hugging Face model deployment in watsonx.ai. - Integration of watsonx components via API controls. - Configuration of prebuilt and custom workflows for TLH reporting. - Development of modular skills for PDF generation and email workflows.\n\nDocumentation Links\n\nHugging Face Integration Guide\nwatsonx.ai Model Deployment Guide",
+    "text": "Step Two Implementation\nThe second phase focuses on deploying AI models and orchestration workflows. This includes:\n\nCustom Hugging Face model deployment in watsonx.ai.\nIntegration of watsonx components via API controls.\nConfiguration of prebuilt and custom workflows for TLH reporting.\nDevelopment of modular skills for PDF generation and email workflows.\n\n\n\nDocumentation Links\n\nHugging Face Integration Guide\nwatsonx.ai Model Deployment Guide",
     "crumbs": [
       "Implementation Methodology",
       "Step Two"
@@ -71,7 +71,7 @@
     "href": "src/implementation_methodology/stepone-imp.html",
     "title": "Step One",
     "section": "",
-    "text": "Step One Implementation - The How\nImplementation begins with data management and real-time retrieval setup. This includes configuring ElasticSearch queries for data ingestion, implementing FIFO methodology for unrealized gains/losses, and establishing tax-compliant algorithms for wash-sale rules. The system uses RAG architecture integrated with watsonx Discovery for improved data processing.\n\nIBM Documentation Links\n\nElasticSearch Query Configuration Guide\nIBM Cloud Object Storage Setup Guide",
+    "text": "Step One Implementation - The How\nImplementation begins with data management and real-time retrieval setup. This includes configuring ElasticSearch queries for data ingestion, implementing FIFO methodology for unrealized gains/losses, and establishing tax-compliant algorithms for wash-sale rules. The system uses RAG architecture integrated with watsonx Discovery for improved data processing.\n\n\nIBM Documentation Links\n\nElasticSearch Query Configuration Guide\nIBM Cloud Object Storage Setup Guide",
     "crumbs": [
       "Implementation Methodology",
       "Step One"
@@ -82,7 +82,7 @@
     "href": "src/implementation_methodology/stepthree-imp.html",
     "title": "Step Three",
     "section": "",
-    "text": "Step Three Implementation\nFinal implementation involves setting up professional-grade output generation using: - Watsonx Orchestrate custom skill for formatting and branding. - PDF Generation Application in IBM Code Engine. - Dynamic tables for financial clarity. - AI-driven natural language understanding for financial queries.\n\nIBM Documentation Links\n\nCode Engine Guide\nPDF Generator app\nWatson Assistant Natural Language Understanding Guide",
+    "text": "Step Three Implementation\nFinal implementation involves setting up professional-grade output generation using:\n\nWatsonx Orchestrate custom skill for formatting and branding.\nPDF Generation Application in IBM Code Engine.\nDynamic tables for financial clarity.\nAI-driven natural language understanding for financial queries.\n\n\n\n\nIBM Documentation Links\n\nCode Engine Guide\nPDF Generator app\nWatson Assistant Natural Language Understanding Guide",
     "crumbs": [
       "Implementation Methodology",
       "Step Three"
@@ -93,7 +93,7 @@
     "href": "src/key-takeaway.html",
     "title": "Key Takeaways",
     "section": "",
-    "text": "Best Practices\nThe solution demonstrates successful integration of: - Context-aware report generation combining RAG and generative AI. - Advanced portfolio optimization with tax-compliant algorithms. - Automated personalized client communications using custom BYOM. - Real-time data retrieval and processing capabilities.\nImplementation best practices include: 1. Using collaborative prototyping of workflows for personas and use cases. 2. Iterating prompt design for structured content generation. 3. Leveraging open-source starter kits for BYOM deployment. 4. Maintaining modular architecture for scalability and efficiency.\n\nReusable Assets\nInclude: - Yahoo Finance API code - Mixtral configurations - Prompt templates",
+    "text": "Best Practices\nThe solution demonstrates successful integration of: - Context-aware report generation combining RAG and generative AI. - Advanced portfolio optimization with tax-compliant algorithms. - Automated personalized client communications using custom BYOM. - Real-time data retrieval and processing capabilities.\nImplementation best practices include: 1. Using collaborative prototyping of workflows for personas and use cases. 2. Iterating prompt design for structured content generation. 3. Leveraging open-source starter kits for BYOM deployment. 4. Maintaining modular architecture for scalability and efficiency.\n\n\nReusable Assets\nInclude: - Yahoo Finance API code - Mixtral configurations - Prompt templates",
     "crumbs": [
       "Key Takeaways"
     ]
