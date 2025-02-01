@@ -4,19 +4,21 @@ format: html
 ---
 
 ### Best Practices
+
 The solution demonstrates successful integration of:
-- Context-aware report generation combining RAG and generative AI
-- Advanced portfolio optimization with tax-compliant algorithms
-- Automated personalized client communications using custom BYOM
-- Real-time data retrieval and processing capabilities
+- Context-aware report generation combining RAG and generative AI.
+- Advanced portfolio optimization with tax-compliant algorithms.
+- Automated personalized client communications using custom BYOM.
+- Real-time data retrieval and processing capabilities.
 
 Implementation best practices include:
+1. Using collaborative prototyping of workflows for personas and use cases.
+2. Iterating prompt design for structured content generation.
+3. Leveraging open-source starter kits for BYOM deployment.
+4. Maintaining modular architecture for scalability and efficiency.
 
-- Using collaborative prototyping of workflows for personas and use cases
-
-- Iterating prompt design for structured content generation
-
-- Leveraging open-source starter kits for BYOM deployment
-
-- Maintaining modular architecture for scalability and efficiency
-
+#### **Reusable Assets**
+Include:
+- Yahoo Finance API code
+- Mixtral configurations
+- Prompt templates

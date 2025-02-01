@@ -6,7 +6,13 @@ format: html
 ### Step Three Implementation
 
 Final implementation involves setting up professional-grade output generation using:
-- watsonx Orchestrate custom skill for formatting and branding
-- PDF Generation Application in IBM Code Engine
-- Dynamic tables for financial clarity
-- AI-driven natural language understanding for financial queries
+- Watsonx Orchestrate custom skill for formatting and branding.
+- PDF Generation Application in IBM Code Engine.
+- Dynamic tables for financial clarity.
+- AI-driven natural language understanding for financial queries.
+
+#### **IBM Documentation Links**
+- [Code Engine Guide](https://cloud.ibm.com/docs/codeengine){target="_blank"}
+- [PDF Generator app](https://github.com/ibm-client-engineering/solution-007-AI-Financial-Advisor/tree/main/tax-loss-harvesting-optimization-main/PDF%20Generator%20App){target="_blank"}
+- [Watson Assistant Natural Language Understanding Guide](https://www.ibm.com/cloud/watson-assistant){target="_blank"}
+

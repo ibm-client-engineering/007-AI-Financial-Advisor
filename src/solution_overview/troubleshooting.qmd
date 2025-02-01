@@ -8,3 +8,14 @@ format: html
 The solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.
 
 <img src="/images/007/IMPLEMENTATION/007_AIOps.png" alt="AIOps" class="responsive-img">
+
+#### **Common Issues and Solutions**
+1. **Problem:** Model deployment fails in watsonx.ai Runtime.
+   - **Solution:** Verify API key permissions in IBM Cloud IAM settings.
+2. **Problem:** Data ingestion errors in ElasticSearch.
+   - **Solution:** Validate bucket endpoints and credentials in IBM Cloud Object Storage configuration.
+
+#### **Documentation Links**
+- [GitHub Workflow Management Documentation](https://docs.github.com/en/actions){target="_blank"}
+- [watsonx Discovery Troubleshooting Guide](https://www.ibm.com/docs/en/watsonx/watson-discovery){target="_blank"}
+

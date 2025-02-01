@@ -8,3 +8,9 @@ format: html
 The solution leverages a multi-layered technical architecture combining watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The data layer ingests structured and unstructured data into Cloud Object Storage, while the processing layer utilizes Mixtral LLM for report generation and a custom BYOM Falcon Model for email generation. The integration layer uses watsonx.orchestrate with prebuilt skills for Gmail automation and custom skills for PDF generation and report formatting.
 
 <img src="/images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="architecture" class="responsive-img">
+
+#### **IBM Documentation Links**
+- [IBM Cloud Object Storage Documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage){target="_blank"}
+- [watsonx.ai Runtime Documentation](https://cloud.ibm.com/apidocs/machine-learning){target="_blank"}
+- [watsonx Discovery Documentation](https://www.ibm.com/docs/en/watsonx/watson-discovery){target="_blank"}
+- [watsonx Orchestrate Documentation](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current){target="_blank"}

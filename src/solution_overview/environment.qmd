@@ -9,6 +9,16 @@ The environment setup includes external integrations with Hugging Face, Gmail, a
 
 <img src="/images/007/Resource_List.png" alt="resources" class="responsive-img">
 
-The environment was set up via IBM Cloud, and the technology leveraged includes watsonx Orchestrate, watsonx.ai, watsonx Discovery (Databases for ElasticSearch), Code Engine and Kibana. Included screenshots of the resources.
+The environment was set up via IBM Cloud, leveraging the following technologies:
+- **watsonx Orchestrate**: Automates workflows like TLH reporting.
+- **watsonx.ai**: Hosts scalable AI models.
+- **watsonx Discovery**: Provides advanced search capabilities (ElasticSearch).
+- **Code Engine**: Executes containerized tasks like PDF generation.
+- **Kibana**: Visualizes ElasticSearch data.
+
+#### **IBM Documentation Links**
+- [IBM Cloud Object Storage Documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage){target="_blank"}
+- [IBM Code Engine Documentation](https://cloud.ibm.com/docs/codeengine){target="_blank"}
+- [ElasticSearch on IBM Cloud Documentation](https://cloud.ibm.com/docs/databases-for-elasticsearch){target="_blank"}
 
 <img src="/images/007/Resource_Cont.png" alt="resources" class="responsive-img">
