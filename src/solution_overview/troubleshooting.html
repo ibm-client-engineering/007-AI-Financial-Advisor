@@ -224,6 +224,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#troubleshooting-common-issues" id="toc-troubleshooting-common-issues" class="nav-link active" data-scroll-target="#troubleshooting-common-issues">Troubleshooting &amp; Common Issues</a></li>
+  <li><a href="#infrastructure-flexibility" id="toc-infrastructure-flexibility" class="nav-link" data-scroll-target="#infrastructure-flexibility">Infrastructure Flexibility</a></li>
   </ul>
 </nav>
     </div>
@@ -252,18 +253,46 @@ ul.task-list li input[type="checkbox"] {
 <section id="troubleshooting-common-issues" class="level3">
 <h3 class="anchored" data-anchor-id="troubleshooting-common-issues">Troubleshooting &amp; Common Issues</h3>
 <p>This section covers typical challenges and their solutions:</p>
-<ol type="1">
-<li><strong>Model Deployment Challenges in watsonx.ai Runtime:</strong>
-<ul>
-<li><strong>Solution:</strong> Verify API key permissions and ensure proper IAM configuration in IBM Cloud.</li>
-</ul></li>
-<li><strong>Data Ingestion Errors in ElasticSearch:</strong>
-<ul>
-<li><strong>Solution:</strong> Check bucket endpoints and credentials in your Cloud Object Storage settings.</li>
-</ul></li>
-</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Environment</th>
+<th>Possible Cause</th>
+<th>Solution</th>
+<th>Documentation Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Model Deployment Failure</td>
+<td>IBM Cloud</td>
+<td>Incorrect API keys or IAM settings</td>
+<td>Verify API key configuration and IAM permissions</td>
+<td><a href="https://cloud.ibm.com/docs/account?topic=account-iamoverview" target="_blank">IAM Guide</a></td>
+</tr>
+<tr class="even">
+<td>Data Ingestion Error</td>
+<td>On-Premise</td>
+<td>Misconfigured endpoints</td>
+<td>Check storage configuration and credentials</td>
+<td><a href="https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=planning-network-requirements" target="_blank">Network Setup</a></td>
+</tr>
+<tr class="odd">
+<td>API Connection Timeout</td>
+<td>Hybrid</td>
+<td>Incorrect endpoint or firewall rules</td>
+<td>Review endpoint configurations and network settings</td>
+<td><a href="https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=planning-deployment-approaches" target="_blank">Hybrid Setup</a></td>
+</tr>
+</tbody>
+</table>
 <p>The solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.</p>
 <p><img src="../../images/007/IMPLEMENTATION/007_AIOps.png" alt="AIOps Modular Architecture" class="responsive-img"></p>
+</section>
+<section id="infrastructure-flexibility" class="level3">
+<h3 class="anchored" data-anchor-id="infrastructure-flexibility">Infrastructure Flexibility</h3>
+<p>This solution can be deployed on: - IBM Cloud (demonstrated here) - AWS (using services like S3, Lambda) - Azure - On-premise using Red Hat OpenShift - Air-gapped environments via IBM Software Hub</p>
 <section id="ibm-documentation-links-for-troubleshooting" class="level4">
 <h4 class="anchored" data-anchor-id="ibm-documentation-links-for-troubleshooting">IBM Documentation Links for Troubleshooting</h4>
 <ul>
