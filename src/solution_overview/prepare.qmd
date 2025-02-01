@@ -23,7 +23,7 @@ This solution leverages a multi-layered architecture that integrates watsonx.ai,
 | Python           | 3.8+     | Application runtime       |
 | Git              | 2.0+     | Version control           |
 
-### Initial Setup
+#### Initial Setup
 
 ```bash
 # Install IBM Cloud CLI
@@ -52,3 +52,4 @@ ibmcloud plugin install code-engine
   [watsonx Discovery Documentation](https://www.ibm.com/docs/en/watsonx/watson-discovery){target="_blank"} – Understand search and data exploration capabilities.
 - **watsonx Orchestrate:**  
   [watsonx Orchestrate Documentation](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current){target="_blank"} – Explore automated workflow management.
+
