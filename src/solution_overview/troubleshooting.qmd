@@ -7,4 +7,4 @@ format: html
 
 The solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.
 
-<img src="../../images/007/IMPLEMENTATION/007_AIOps.png" alt="architecture" width="800">
+<img src="/images/007/IMPLEMENTATION/007_AIOps.png" alt="AIOps" class="responsive-img">
