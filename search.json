@@ -14,64 +14,34 @@
     "text": "import yfinance as yf\nimport pandas as pd\nfrom datetime import datetime\n\ndef fetch_data(tickers, start_date, end_date):\n    \"\"\"\n    Fetch historical price data and sector/industry classification for a list of tickers.\n\n    Parameters:\n        tickers (list): List of stock tickers.\n        start_date (str): Start date in 'YYYY-MM-DD' format.\n        end_date (str): End date in 'YYYY-MM-DD' format.\n\n    Returns:\n        tuple:\n            - historical_prices (pd.DataFrame): Historical price data for all tickers.\n            - sector_data (pd.DataFrame): Sector and industry classification for all tickers.\n    \"\"\"\n    historical_prices = pd.DataFrame()\n    \n\n    for ticker in tickers:\n        try:\n            print(f\"Fetching data for {ticker}...\")\n            stock = yf.Ticker(ticker)\n\n            # Fetch historical price data\n            history = stock.history(start=start_date, end=end_date)\n            history['Ticker'] = ticker\n            historical_prices = pd.concat([historical_prices, history])\n\n        except Exception as e:\n            print(f\"Error fetching data for {ticker}: {e}\")\n\n\n\n    return historical_prices\n\n\n# Full ticker list\ntickers = [\n    \"AAPL\", \"MSFT\", \"GOOGL\", \"NVDA\", \"META\", \"AMD\", \"CRM\", \"ORCL\", \"ADBE\", \"INTC\", \"TSLA\", \"XOM\", \"CVX\", \"ENPH\", \"FSLR\", \"NEE\", \"RUN\", \"SEDG\", \"BP\", \"SLB\", \"COP\", \"EOG\", \"JPM\", \"BAC\", \"GS\", \"WFC\", \"MS\", \"BLK\", \"JNJ\", \"PFE\", \"MRK\", \"ABBV\", \"AMGN\", \"UNH\", \"DIS\", \"HD\", \"AMZN\", \"NKE\", \"MCD\", \"SBUX\", \"BA\", \"CAT\", \"GE\", \"DE\", \"MMM\", \"PG\", \"KO\", \"PEP\", \"WMT\", \"COST\", \"AMT\", \"PLD\", \"SPG\", \"O\", \"DUK\", \"SO\", \"AWK\", \"GOOG\", \"NFLX\", \"T\", \"NEM\", \"BHP\", \"RIO\", \"LIN\", \"SPY\", \"QQQ\", \"DIA\", \"IVV\", \"VTI\", \"ARKK\", \"VOO\", \"XLK\", \"XLE\", \"IHI\", \"IYR\"\n]\n\n# Define date range\nstart_date = \"2023-01-01\"\nend_date = datetime.today().strftime('%Y-%m-%d')\n\n# Fetch data\nhistorical_prices = fetch_data(tickers, start_date, end_date)\n\n\n# Display summary\nprint(\"\\nHistorical Prices (Sample):\")\nprint(historical_prices.head())\n\nFetching data for AAPL...\nFetching data for MSFT...\nFetching data for GOOGL...\nFetching data for NVDA...\nFetching data for META...\nFetching data for AMD...\nFetching data for CRM...\nFetching data for ORCL...\nFetching data for ADBE...\nFetching data for INTC...\nFetching data for TSLA...\nFetching data for XOM...\nFetching data for CVX...\nFetching data for ENPH...\nFetching data for FSLR...\nFetching data for NEE...\nFetching data for RUN...\nFetching data for SEDG...\nFetching data for BP...\nFetching data for SLB...\nFetching data for COP...\nFetching data for EOG...\nFetching data for JPM...\nFetching data for BAC...\nFetching data for GS...\nFetching data for WFC...\nFetching data for MS...\nFetching data for BLK...\nFetching data for JNJ...\nFetching data for PFE...\nFetching data for MRK...\nFetching data for ABBV...\nFetching data for AMGN...\nFetching data for UNH...\nFetching data for DIS...\nFetching data for HD...\nFetching data for AMZN...\nFetching data for NKE...\nFetching data for MCD...\nFetching data for SBUX...\nFetching data for BA...\nFetching data for CAT...\nFetching data for GE...\nFetching data for DE...\nFetching data for MMM...\nFetching data for PG...\nFetching data for KO...\nFetching data for PEP...\nFetching data for WMT...\nFetching data for COST...\nFetching data for AMT...\nFetching data for PLD...\nFetching data for SPG...\nFetching data for O...\nFetching data for DUK...\nFetching data for SO...\nFetching data for AWK...\nFetching data for GOOG...\nFetching data for NFLX...\nFetching data for T...\nFetching data for NEM...\nFetching data for BHP...\nFetching data for RIO...\nFetching data for LIN...\nFetching data for SPY...\nFetching data for QQQ...\nFetching data for DIA...\nFetching data for IVV...\nFetching data for VTI...\nFetching data for ARKK...\nFetching data for VOO...\nFetching data for XLK...\nFetching data for XLE...\nFetching data for IHI...\nFetching data for IYR...\n\nHistorical Prices (Sample):\n                                 Open        High         Low       Close  \\\nDate                                                                        \n2023-01-03 00:00:00-05:00  128.924237  129.537780  122.877820  123.768456   \n2023-01-04 00:00:00-05:00  125.569520  127.321104  123.778358  125.045036   \n2023-01-05 00:00:00-05:00  125.807014  126.440353  123.461682  123.718971   \n2023-01-06 00:00:00-05:00  124.698677  128.934129  123.590330  128.271103   \n2023-01-09 00:00:00-05:00  129.112255  132.021662  128.538289  128.795578   \n\n                              Volume  Dividends  Stock Splits Ticker  \\\nDate                                                                   \n2023-01-03 00:00:00-05:00  112117500        0.0           0.0   AAPL   \n2023-01-04 00:00:00-05:00   89113600        0.0           0.0   AAPL   \n2023-01-05 00:00:00-05:00   80962700        0.0           0.0   AAPL   \n2023-01-06 00:00:00-05:00   87754700        0.0           0.0   AAPL   \n2023-01-09 00:00:00-05:00   70790800        0.0           0.0   AAPL   \n\n                           Capital Gains  \nDate                                      \n2023-01-03 00:00:00-05:00            NaN  \n2023-01-04 00:00:00-05:00            NaN  \n2023-01-05 00:00:00-05:00            NaN  \n2023-01-06 00:00:00-05:00            NaN  \n2023-01-09 00:00:00-05:00            NaN  \n\n\n\nhistorical_price\n\n\n\n\n\n\n\n\nOpen\nHigh\nLow\nClose\nVolume\nDividends\nStock Splits\nTicker\nCapital Gains\n\n\nDate\n\n\n\n\n\n\n\n\n\n\n\n\n\n2023-01-03 00:00:00-05:00\n128.924245\n129.537788\n122.877827\n123.768463\n112117500\n0.0\n0.0\nAAPL\nNaN\n\n\n2023-01-04 00:00:00-05:00\n125.569527\n127.321112\n123.778365\n125.045044\n89113600\n0.0\n0.0\nAAPL\nNaN\n\n\n2023-01-05 00:00:00-05:00\n125.807022\n126.440361\n123.461690\n123.718979\n80962700\n0.0\n0.0\nAAPL\nNaN\n\n\n2023-01-06 00:00:00-05:00\n124.698692\n128.934144\n123.590345\n128.271118\n87754700\n0.0\n0.0\nAAPL\nNaN\n\n\n2023-01-09 00:00:00-05:00\n129.112286\n132.021694\n128.538320\n128.795609\n70790800\n0.0\n0.0\nAAPL\nNaN\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n2024-11-13 00:00:00-05:00\n99.010002\n99.410004\n98.430000\n98.559998\n4801500\n0.0\n0.0\nIYR\n0.0\n\n\n2024-11-14 00:00:00-05:00\n98.540001\n98.540001\n97.559998\n97.690002\n6714800\n0.0\n0.0\nIYR\n0.0\n\n\n2024-11-15 00:00:00-05:00\n97.260002\n97.989998\n96.959999\n97.800003\n6786300\n0.0\n0.0\nIYR\n0.0\n\n\n2024-11-18 00:00:00-05:00\n97.389999\n98.620003\n97.180000\n98.599998\n4726100\n0.0\n0.0\nIYR\n0.0\n\n\n2024-11-19 00:00:00-05:00\n98.300003\n99.320000\n97.889999\n99.120003\n5340800\n0.0\n0.0\nIYR\n0.0\n\n\n\n\n35550 rows × 9 columns\n\n\n\n\nhistorical_prices.to_csv(\"/Users/nitikabhatia/Downloads/latest_historical_prices.csv\")\n\n\n!pip install yahooquery\n\nCollecting yahooquery\n  Obtaining dependency information for yahooquery from https://files.pythonhosted.org/packages/d1/a9/9a06f31cc068c7997b63a358f94ed433afb28599ef63bdcd5333db4a19d8/yahooquery-2.3.7-py3-none-any.whl.metadata\n  Downloading yahooquery-2.3.7-py3-none-any.whl.metadata (5.0 kB)\nRequirement already satisfied: beautifulsoup4&lt;5.0.0,&gt;=4.12.2 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from yahooquery) (4.12.2)\nRequirement already satisfied: lxml&lt;5.0.0,&gt;=4.9.3 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from yahooquery) (4.9.3)\nRequirement already satisfied: pandas&lt;3.0.0,&gt;=2.0.3 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from yahooquery) (2.1.4)\nRequirement already satisfied: requests&lt;3.0.0,&gt;=2.31.0 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from yahooquery) (2.31.0)\nCollecting requests-futures&lt;2.0.0,&gt;=1.0.1 (from yahooquery)\n  Obtaining dependency information for requests-futures&lt;2.0.0,&gt;=1.0.1 from https://files.pythonhosted.org/packages/91/23/7c1096731c15c83826cb0dd42078b561a838aed44c36f370aeb815168106/requests_futures-1.0.2-py2.py3-none-any.whl.metadata\n  Downloading requests_futures-1.0.2-py2.py3-none-any.whl.metadata (12 kB)\nRequirement already satisfied: tqdm&lt;5.0.0,&gt;=4.65.0 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from yahooquery) (4.65.0)\nRequirement already satisfied: soupsieve&gt;1.2 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from beautifulsoup4&lt;5.0.0,&gt;=4.12.2-&gt;yahooquery) (2.4)\nRequirement already satisfied: numpy&lt;2,&gt;=1.23.2 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from pandas&lt;3.0.0,&gt;=2.0.3-&gt;yahooquery) (1.24.3)\nRequirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from pandas&lt;3.0.0,&gt;=2.0.3-&gt;yahooquery) (2.8.2)\nRequirement already satisfied: pytz&gt;=2020.1 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from pandas&lt;3.0.0,&gt;=2.0.3-&gt;yahooquery) (2023.3.post1)\nRequirement already satisfied: tzdata&gt;=2022.1 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from pandas&lt;3.0.0,&gt;=2.0.3-&gt;yahooquery) (2023.3)\nRequirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.31.0-&gt;yahooquery) (2.0.4)\nRequirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.31.0-&gt;yahooquery) (3.4)\nRequirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.31.0-&gt;yahooquery) (1.26.18)\nRequirement already satisfied: certifi&gt;=2017.4.17 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from requests&lt;3.0.0,&gt;=2.31.0-&gt;yahooquery) (2024.6.2)\nRequirement already satisfied: six&gt;=1.5 in /Users/nitikabhatia/anaconda3/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&lt;3.0.0,&gt;=2.0.3-&gt;yahooquery) (1.16.0)\nDownloading yahooquery-2.3.7-py3-none-any.whl (52 kB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.7/52.7 kB 7.0 MB/s eta 0:00:00\nDownloading requests_futures-1.0.2-py2.py3-none-any.whl (7.7 kB)\nInstalling collected packages: requests-futures, yahooquery\nSuccessfully installed requests-futures-1.0.2 yahooquery-2.3.7\n\n\n\nimport yfinance as yf\nimport pandas as pd\nfrom datetime import datetime\n\ndef fetch_stock_data_with_ytd(stock_tickers):\n    \"\"\"\n    Fetch enhanced stock data with calculated YTD Return.\n    \"\"\"\n    stock_data = []\n    current_year = datetime.now().year\n\n    for ticker in stock_tickers:\n        try:\n            stock = yf.Ticker(ticker)\n            info = stock.info\n            \n            # Retrieve historical data to calculate YTD return\n            hist = stock.history(start=f\"{current_year}-01-01\", end=datetime.now().strftime('%Y-%m-%d'))\n            if not hist.empty:\n                jan_1_price = hist.iloc[0][\"Close\"]\n                current_price = hist.iloc[-1][\"Close\"]\n                ytd_return = ((current_price - jan_1_price) / jan_1_price) * 100\n            else:\n                ytd_return = \"N/A\"\n            \n            # Extract key metrics\n            stock_details = {\n                \"Ticker\": ticker,\n                \"Sector\": info.get(\"sector\", \"N/A\"),\n                \"Beta\": info.get(\"beta\", \"N/A\"),\n                \"Dividend Yield (%)\": info.get(\"dividendYield\", \"N/A\") * 100 if info.get(\"dividendYield\") else \"N/A\",\n                \"Growth Rate\": info.get(\"earningsGrowth\", \"N/A\"),\n                \"EPS\": info.get(\"trailingEps\", \"N/A\"),\n                \"P/E Ratio\": info.get(\"trailingPE\", \"N/A\"),\n                \"P/B Ratio\": info.get(\"priceToBook\", \"N/A\"),\n                \"Market Cap (B)\": info.get(\"marketCap\", 0) / 1e9,\n                \"Volume\": info.get(\"volume\", \"N/A\"),\n                \"52-Week High\": info.get(\"fiftyTwoWeekHigh\", \"N/A\"),\n                \"52-Week Low\": info.get(\"fiftyTwoWeekLow\", \"N/A\"),\n                \"YTD Return (%)\": ytd_return,\n            }\n\n            stock_data.append(stock_details)\n\n        except Exception as e:\n            print(f\"Error fetching data for {ticker}: {e}\")\n            continue\n\n    return pd.DataFrame(stock_data)\n\nstock_tickers = [\n    \"AAPL\", \"MSFT\", \"GOOGL\", \"NVDA\", \"META\", \"AMD\", \"CRM\", \"ORCL\", \"ADBE\", \"INTC\", \"TSLA\", \"XOM\", \"CVX\", \"ENPH\", \"FSLR\", \"NEE\", \"RUN\", \"SEDG\", \"BP\", \"SLB\", \"COP\", \"EOG\", \"JPM\", \"BAC\", \"GS\", \"WFC\", \"MS\", \"BLK\", \"JNJ\", \"PFE\", \"MRK\", \"ABBV\", \"AMGN\", \"UNH\", \"DIS\", \"HD\", \"AMZN\", \"NKE\", \"MCD\", \"SBUX\", \"BA\", \"CAT\", \"GE\", \"DE\", \"MMM\", \"PG\", \"KO\", \"PEP\", \"WMT\", \"COST\", \"AMT\", \"PLD\", \"SPG\", \"O\", \"DUK\", \"SO\", \"AWK\", \"GOOG\", \"NFLX\", \"T\", \"NEM\", \"BHP\", \"RIO\", \"LIN\"\n]\n\n\n\nstock_data = fetch_stock_data_with_ytd(stock_tickers)\n\n# Display the fetched stock data\nprint(stock_data)\n\n   Ticker                  Sector   Beta Dividend Yield (%) Growth Rate  \\\n0    AAPL              Technology  1.240               0.44      -0.341   \n1    MSFT              Technology  0.904               0.79       0.104   \n2   GOOGL  Communication Services  1.034               0.45       0.366   \n3    NVDA              Technology  1.657               0.03        1.68   \n4    META  Communication Services  1.215               0.36       0.374   \n..    ...                     ...    ...                ...         ...   \n59      T  Communication Services  0.730               4.88         N/A   \n60    NEM         Basic Materials  0.531               2.32       3.039   \n61    BHP         Basic Materials  0.859               5.59       0.077   \n62    RIO         Basic Materials  0.617               6.97       0.133   \n63    LIN         Basic Materials  0.949               1.25       0.009   \n\n      EPS  P/E Ratio  P/B Ratio  Market Cap (B)     Volume  52-Week High  \\\n0    6.09  37.602627   60.79108     3461.518197   30174153        237.49   \n1   12.12  34.281353  10.738117     3089.118265   18442663        468.35   \n2    7.44  23.653225   6.870729     2188.452037   18962205        191.75   \n3    2.12   68.81604   61.60895     3606.152741  260171855        149.77   \n4   21.38  26.450891   8.675483     1416.463647    9566484        602.95   \n..    ...        ...        ...             ...        ...           ...   \n59   1.24   18.41129   1.600308      163.811869   13924052         23.20   \n60  -2.18        N/A   1.655244       49.158210    6408011         58.72   \n61   3.11  16.807076   5.914234      132.929937    1811485         69.11   \n62   6.59   9.467375   1.832305       99.642450    1206041         75.09   \n63  13.37  33.667915   5.471563      214.337782    1828508        487.49   \n\n    52-Week Low  YTD Return (%)  \n0        164.08       23.571612  \n1        362.90       13.267011  \n2        127.90       29.232873  \n3         45.01      205.268110  \n4        313.66       62.516795  \n..          ...             ...  \n59        15.94       39.927917  \n60        29.42        7.541056  \n61        50.90      -18.216277  \n62        59.35       -9.906014  \n63       396.07        9.408891  \n\n[64 rows x 13 columns]\n\n\n\nstock_data\n\n\n\n\n\n\n\n\nTicker\nSector\nBeta\nDividend Yield (%)\nGrowth Rate\nEPS\nP/E Ratio\nP/B Ratio\nMarket Cap (B)\nVolume\n52-Week High\n52-Week Low\nYTD Return (%)\n\n\n\n\n0\nAAPL\nTechnology\n1.240\n0.44\n-0.341\n6.09\n37.602627\n60.79108\n3461.518197\n30174153\n237.49\n164.08\n23.571612\n\n\n1\nMSFT\nTechnology\n0.904\n0.79\n0.104\n12.12\n34.281353\n10.738117\n3089.118265\n18442663\n468.35\n362.90\n13.267011\n\n\n2\nGOOGL\nCommunication Services\n1.034\n0.45\n0.366\n7.44\n23.653225\n6.870729\n2188.452037\n18962205\n191.75\n127.90\n29.232873\n\n\n3\nNVDA\nTechnology\n1.657\n0.03\n1.68\n2.12\n68.81604\n61.60895\n3606.152741\n260171855\n149.77\n45.01\n205.268110\n\n\n4\nMETA\nCommunication Services\n1.215\n0.36\n0.374\n21.38\n26.450891\n8.675483\n1416.463647\n9566484\n602.95\n313.66\n62.516795\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n59\nT\nCommunication Services\n0.730\n4.88\nN/A\n1.24\n18.41129\n1.600308\n163.811869\n13924052\n23.20\n15.94\n39.927917\n\n\n60\nNEM\nBasic Materials\n0.531\n2.32\n3.039\n-2.18\nN/A\n1.655244\n49.158210\n6408011\n58.72\n29.42\n7.541056\n\n\n61\nBHP\nBasic Materials\n0.859\n5.59\n0.077\n3.11\n16.807076\n5.914234\n132.929937\n1811485\n69.11\n50.90\n-18.216277\n\n\n62\nRIO\nBasic Materials\n0.617\n6.97\n0.133\n6.59\n9.467375\n1.832305\n99.642450\n1206041\n75.09\n59.35\n-9.906014\n\n\n63\nLIN\nBasic Materials\n0.949\n1.25\n0.009\n13.37\n33.667915\n5.471563\n214.337782\n1828508\n487.49\n396.07\n9.408891\n\n\n\n\n64 rows × 13 columns"
   },
   {
-    "objectID": "src/landing_page/landing_page.html",
-    "href": "src/landing_page/landing_page.html",
-    "title": "Project Name",
+    "objectID": "src/demo-video.html",
+    "href": "src/demo-video.html",
+    "title": "Demo Video Walkthrough",
     "section": "",
-    "text": "Project Name\nSubtitle\n\n\nOur Documentation \n\n\n\n\n\nNext Steps\n\n\n\nL ink 1\n\n\n\nLink 2"
-  },
-  {
-    "objectID": "src/solution_overview/troubleshooting.html",
-    "href": "src/solution_overview/troubleshooting.html",
-    "title": "Step Three",
-    "section": "",
-    "text": "Step Three Solution\nThe solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.",
+    "text": "An end-to-end walkthrough of the live app with key talking points on features and functionality.",
     "crumbs": [
-      "Solution Overview",
-      "Troubleshooting"
+      "Demo Video"
     ]
   },
   {
-    "objectID": "src/key-takeaway.html",
-    "href": "src/key-takeaway.html",
-    "title": "Key Takeaways",
-    "section": "",
-    "text": "Best Practices\nThe solution demonstrates successful integration of: - Context-aware report generation combining RAG and generative AI - Advanced portfolio optimization with tax-compliant algorithms - Automated personalized client communications using custom BYOM - Real-time data retrieval and processing capabilities\nImplementation best practices include:\n\nUsing collaborative prototyping of workflows for personas and use cases\nIterating prompt design for structured content generation\nLeveraging open-source starter kits for BYOM deployment\nMaintaining modular architecture for scalability and efficiency",
+    "objectID": "src/demo-video.html#key-features-walkthrough",
+    "href": "src/demo-video.html#key-features-walkthrough",
+    "title": "Demo Video Walkthrough",
+    "section": "Key Features & Walkthrough",
+    "text": "Key Features & Walkthrough\n\nOverview: A concise demo showcasing the live app’s end-to-end workflow, from AI-powered financial analysis to automated report generation and email notifications.\nFeature 1: Automated analysis that processes financial data and generates actionable insights.\nFeature 2: An intuitive, interactive interface enabling quick access to key metrics and reports.\nArchitecture & Implementation: Highlights a robust four-layer solution with integrated workflows (team workshops, prompt engineering, data integration, and orchestration).\nNext Steps & Takeaways: Accelerate your deployment with IBM’s technical community. Request a full hands-on demo with Raffi via LinkedIn today!",
     "crumbs": [
-      "Key Takeaways"
+      "Demo Video"
     ]
   },
   {
-    "objectID": "src/implementation_methodology/stepthree-imp.html",
-    "href": "src/implementation_methodology/stepthree-imp.html",
-    "title": "Step Three",
-    "section": "",
-    "text": "Step Three Implementation\nFinal implementation involves setting up professional-grade output generation using: - watsonx Orchestrate custom skill for formatting and branding - PDF Generation Application in IBM Code Engine - Dynamic tables for financial clarity - AI-driven natural language understanding for financial queries",
-    "crumbs": [
-      "Implementation Methodology",
-      "Step Three"
-    ]
-  },
-  {
-    "objectID": "src/implementation_methodology/stepone-imp.html",
-    "href": "src/implementation_methodology/stepone-imp.html",
-    "title": "Step One",
-    "section": "",
-    "text": "Step One Implementation - The How\nImplementation begins with data management and real-time retrieval setup. This includes configuring ElasticSearch queries for data ingestion, implementing FIFO methodology for unrealized gains/losses, and establishing tax-compliant algorithms for wash-sale rules. The system uses RAG architecture integrated with watsonx Discovery for improved data processing.",
-    "crumbs": [
-      "Implementation Methodology",
-      "Step One"
-    ]
-  },
-  {
-    "objectID": "src/implementation_methodology/steptwo-imp.html",
-    "href": "src/implementation_methodology/steptwo-imp.html",
+    "objectID": "src/solution_overview/environment.html",
+    "href": "src/solution_overview/environment.html",
     "title": "Step Two",
     "section": "",
-    "text": "Step Two Implementation\nThe second phase focuses on deploying AI models and orchestration workflows. This includes: - Custom Hugging Face model deployment in watsonx.ai - Integration of watsonx components via API controls - Configuration of prebuilt and custom workflows for TLH reporting - Development of modular skills for PDF generation and email workflows1",
+    "text": "Step Two Solution\nThe environment setup includes external integrations with Hugging Face, Gmail, and Yahoo Finance API for enhanced functionality. The system employs Elastic Search indexing for sub-second queries and data enrichment pipelines for advanced metrics. The processing environment includes IBM Code Engine for containerized PDF generation and watsonx.ai for hosting scalable models.\n\nThe environment was set up via IBM Cloud, and the technology leveraged includes watsonx Orchestrate, watsonx.ai, watsonx Discovery (Databases for ElasticSearch), Code Engine and Kibana. Included screenshots of the resources.",
     "crumbs": [
-      "Implementation Methodology",
-      "Step Two"
+      "Solution Overview",
+      "Environment"
     ]
   },
   {
@@ -86,15 +56,65 @@
     ]
   },
   {
-    "objectID": "src/solution_overview/environment.html",
-    "href": "src/solution_overview/environment.html",
+    "objectID": "src/implementation_methodology/steptwo-imp.html",
+    "href": "src/implementation_methodology/steptwo-imp.html",
     "title": "Step Two",
     "section": "",
-    "text": "Step Two Solution\nThe environment setup includes external integrations with Hugging Face, Gmail, and Yahoo Finance API for enhanced functionality. The system employs Elastic Search indexing for sub-second queries and data enrichment pipelines for advanced metrics. The processing environment includes IBM Code Engine for containerized PDF generation and watsonx.ai for hosting scalable models.\n\nThe environment was set up via IBM Cloud, and the technology leveraged includes watsonx Orchestrate, watsonx.ai, watsonx Discovery (Databases for ElasticSearch), Code Engine and Kibana. Included screenshots of the resources.",
+    "text": "Step Two Implementation\nThe second phase focuses on deploying AI models and orchestration workflows. This includes: - Custom Hugging Face model deployment in watsonx.ai - Integration of watsonx components via API controls - Configuration of prebuilt and custom workflows for TLH reporting - Development of modular skills for PDF generation and email workflows1",
+    "crumbs": [
+      "Implementation Methodology",
+      "Step Two"
+    ]
+  },
+  {
+    "objectID": "src/implementation_methodology/stepone-imp.html",
+    "href": "src/implementation_methodology/stepone-imp.html",
+    "title": "Step One",
+    "section": "",
+    "text": "Step One Implementation - The How\nImplementation begins with data management and real-time retrieval setup. This includes configuring ElasticSearch queries for data ingestion, implementing FIFO methodology for unrealized gains/losses, and establishing tax-compliant algorithms for wash-sale rules. The system uses RAG architecture integrated with watsonx Discovery for improved data processing.",
+    "crumbs": [
+      "Implementation Methodology",
+      "Step One"
+    ]
+  },
+  {
+    "objectID": "src/implementation_methodology/stepthree-imp.html",
+    "href": "src/implementation_methodology/stepthree-imp.html",
+    "title": "Step Three",
+    "section": "",
+    "text": "Step Three Implementation\nFinal implementation involves setting up professional-grade output generation using: - watsonx Orchestrate custom skill for formatting and branding - PDF Generation Application in IBM Code Engine - Dynamic tables for financial clarity - AI-driven natural language understanding for financial queries",
+    "crumbs": [
+      "Implementation Methodology",
+      "Step Three"
+    ]
+  },
+  {
+    "objectID": "src/key-takeaway.html",
+    "href": "src/key-takeaway.html",
+    "title": "Key Takeaways",
+    "section": "",
+    "text": "Best Practices\nThe solution demonstrates successful integration of: - Context-aware report generation combining RAG and generative AI - Advanced portfolio optimization with tax-compliant algorithms - Automated personalized client communications using custom BYOM - Real-time data retrieval and processing capabilities\nImplementation best practices include:\n\nUsing collaborative prototyping of workflows for personas and use cases\nIterating prompt design for structured content generation\nLeveraging open-source starter kits for BYOM deployment\nMaintaining modular architecture for scalability and efficiency",
+    "crumbs": [
+      "Key Takeaways"
+    ]
+  },
+  {
+    "objectID": "src/solution_overview/troubleshooting.html",
+    "href": "src/solution_overview/troubleshooting.html",
+    "title": "Step Three",
+    "section": "",
+    "text": "Step Three Solution\nThe solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.",
     "crumbs": [
       "Solution Overview",
-      "Environment"
+      "Troubleshooting"
     ]
+  },
+  {
+    "objectID": "src/landing_page/landing_page.html",
+    "href": "src/landing_page/landing_page.html",
+    "title": "Project Name",
+    "section": "",
+    "text": "Project Name\nSubtitle\n\n\nOur Documentation \n\n\n\n\n\nNext Steps\n\n\n\nL ink 1\n\n\n\nLink 2"
   },
   {
     "objectID": "index.html",

@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e8bcf64876ec7cad2f78e58d541fd4f4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-94e778a138bc557608232593ff1d6d72.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ibm-client-engineering/007-AI-Financial-Advisor"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ibm-client-engineering/solution-007-AI-Financial-Advisor"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -105,11 +105,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-linkedin">    
         <li>
-    <a class="dropdown-item" href="http://linkedin.com/post">
+    <a class="dropdown-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://ibm-client-engineering.github.io/solution-007-AI-Financial-Advisor/&amp;title=007%20AI%20Financial%20Advisor&amp;summary=Check%20out%20this%20guide%20on%20building%20a%20007%20agent%20for%20financial%20advisors%20using%20multiple%20large%20language%20models%20and%20custom%20automations%20including%20report%20generation%20and%20email%20automation.&amp;source=IBM">
  <span class="dropdown-text">Share on your LinkedIn</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.linkedin.com/company/ibm/">
+    <a class="dropdown-item" href="https://www.linkedin.com/company/cs-tech-expert-labs">
  <span class="dropdown-text">IBM LinkedIn</span></a>
   </li>  
     </ul>
@@ -203,6 +203,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../src/demo-video.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Demo Video</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../src/key-takeaway.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Key Takeaways</span></a>
   </div>
@@ -246,9 +252,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="step-two-solution" class="level3">
 <h3 class="anchored" data-anchor-id="step-two-solution">Step Two Solution</h3>
 <p>The environment setup includes external integrations with Hugging Face, Gmail, and Yahoo Finance API for enhanced functionality. The system employs Elastic Search indexing for sub-second queries and data enrichment pipelines for advanced metrics. The processing environment includes IBM Code Engine for containerized PDF generation and watsonx.ai for hosting scalable models.</p>
-<p><img src="../../images/007/Resource_List.png" alt="architecture" width="800"></p>
+<p><img src="../../images/007/Resource_List.png" alt="resources" class="responsive-img"></p>
 <p>The environment was set up via IBM Cloud, and the technology leveraged includes watsonx Orchestrate, watsonx.ai, watsonx Discovery (Databases for ElasticSearch), Code Engine and Kibana. Included screenshots of the resources.</p>
-<p><img src="../../images/007/Resource_Cont.png" alt="architecture" width="800"></p>
+<p><img src="../../images/007/Resource_Cont.png" alt="resources" class="responsive-img"></p>
 
 
 </section>
@@ -344,7 +350,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ibm-client-engineering\.github\.io\/007-AI-Financial-Advisor\/");
+      var filterRegex = new RegExp("https:\/\/ibm-client-engineering\.github\.io\/solution-007-AI-Financial-Advisor\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
