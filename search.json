@@ -93,7 +93,7 @@
     "href": "src/key-takeaway.html",
     "title": "Key Takeaways",
     "section": "",
-    "text": "Best Practices\nThe solution demonstrates successful integration of: - Context-aware report generation combining RAG and generative AI. - Advanced portfolio optimization with tax-compliant algorithms. - Automated personalized client communications using custom BYOM. - Real-time data retrieval and processing capabilities.\nImplementation best practices include: 1. Using collaborative prototyping of workflows for personas and use cases. 2. Iterating prompt design for structured content generation. 3. Leveraging open-source starter kits for BYOM deployment. 4. Maintaining modular architecture for scalability and efficiency.\n\n\nReusable Assets\nInclude: - Yahoo Finance API code - Mixtral configurations - Prompt templates",
+    "text": "Best Practices\nThe solution demonstrates successful integration of:\n\nContext-aware report generation combining RAG and generative AI.\nAdvanced portfolio optimization with tax-compliant algorithms.\nAutomated personalized client communications using custom BYOM.\nReal-time data retrieval and processing capabilities.\n\nImplementation best practices include:\n\nUsing collaborative prototyping of workflows for personas and use cases.\nIterating prompt design for structured content generation.\nLeveraging open-source starter kits for BYOM deployment.\nMaintaining modular architecture for scalability and efficiency.\n\n\n\nReusable Assets\nInclude:\n\nYahoo Finance API code\nMixtral configurations\nPrompt templates",
     "crumbs": [
       "Key Takeaways"
     ]
