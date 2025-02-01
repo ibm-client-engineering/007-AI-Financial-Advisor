@@ -388,14 +388,43 @@ a[role=listitem] {
     .nav-page {
       flex-direction: column;   /* Place “previous” and “next” on separate lines if you prefer */
       align-items: center;
+      max-width: 100% !important; /* fix top and bottom nav */
     }
   }
   
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .navbar {
       flex-direction: column; 
       align-items: flex-start; 
       padding: 0.5rem; 
+    }
+  }
+
+/* Mobile fix for next/previous links going off-screen */
+@media (max-width: 768px) {
+    /* Let the whole page-navigation flex container wrap if needed. */
+    .page-navigation {
+      flex-wrap: wrap;
+    }
+  
+    .nav-page {
+      flex-direction: column;
+      max-width: 100% !important; 
+      margin: 0 auto; 
+      padding: 0.5rem;
+      text-align: center;
+    }
+  
+    /* If the text is huge, scale it down further. */
+    .nav-page-text {
+      font-size: 1.2rem !important; 
+      margin: 0.5rem 0; 
+    }
+  
+    /* Let the link text wrap when it’s too long. */
+    .nav-page a {
+      flex-wrap: wrap;
+      white-space: normal;
     }
   }
   
