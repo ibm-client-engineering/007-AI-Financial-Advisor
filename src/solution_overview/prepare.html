@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Step One – 007 AI Financial Advisor</title>
+<title>Step One: Prepare – Technical Architecture Overview – 007 AI Financial Advisor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -223,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-one-solution---the-what" id="toc-step-one-solution---the-what" class="nav-link active" data-scroll-target="#step-one-solution---the-what">Step One Solution - The What</a></li>
+  <li><a href="#what-were-building" id="toc-what-were-building" class="nav-link active" data-scroll-target="#what-were-building">What We’re Building</a></li>
   </ul>
 </nav>
     </div>
@@ -232,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/solution_overview/prepare.html">Solution Overview</a></li><li class="breadcrumb-item"><a href="../../src/solution_overview/prepare.html">Prepare</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Step One</h1>
+<h1 class="title">Step One: Prepare – Technical Architecture Overview</h1>
 </div>
 
 
@@ -249,17 +249,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="step-one-solution---the-what" class="level3">
-<h3 class="anchored" data-anchor-id="step-one-solution---the-what">Step One Solution - The What</h3>
-<p>The solution leverages a multi-layered technical architecture combining watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The data layer ingests structured and unstructured data into Cloud Object Storage, while the processing layer utilizes Mixtral LLM for report generation and a custom BYOM Falcon Model for email generation. The integration layer uses watsonx.orchestrate with prebuilt skills for Gmail automation and custom skills for PDF generation and report formatting.</p>
-<p><img src="../../images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="architecture" class="responsive-img"></p>
-<section id="ibm-documentation-links" class="level4">
-<h4 class="anchored" data-anchor-id="ibm-documentation-links"><strong>IBM Documentation Links</strong></h4>
+<section id="what-were-building" class="level3">
+<h3 class="anchored" data-anchor-id="what-were-building">What We’re Building</h3>
+<p>This solution leverages a multi-layered architecture that integrates watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The architecture comprises:</p>
 <ul>
-<li><a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage" target="_blank">IBM Cloud Object Storage Documentation</a></li>
-<li><a href="https://cloud.ibm.com/apidocs/machine-learning" target="_blank">watsonx.ai Runtime Documentation</a></li>
-<li><a href="https://www.ibm.com/docs/en/watsonx/watson-discovery" target="_blank">watsonx Discovery Documentation</a></li>
-<li><a href="https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current" target="_blank">watsonx Orchestrate Documentation</a></li>
+<li><strong>Data Layer:</strong> Ingests structured and unstructured data into Cloud Object Storage.</li>
+<li><strong>Processing Layer:</strong> Utilizes LLMs (e.g., Mixtral, BYOM Falcon) for dynamic report and email generation.</li>
+<li><strong>Integration Layer:</strong> Employs watsonx.orchestrate for automating workflows such as Gmail and PDF generation.</li>
+<li><strong>Interface Layer:</strong> Provides an intuitive UI for real-time insights and actions.</li>
+</ul>
+<p><img src="../../images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="Technical Architecture Diagram" class="responsive-img"></p>
+<section id="ibm-documentation-links" class="level4">
+<h4 class="anchored" data-anchor-id="ibm-documentation-links">IBM Documentation Links</h4>
+<ul>
+<li><strong>IBM Cloud Object Storage:</strong><br>
+<a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage" target="_blank">Getting Started with IBM Cloud Object Storage</a> – Learn how to provision and configure your storage service.</li>
+<li><strong>watsonx.ai Runtime:</strong><br>
+<a href="https://cloud.ibm.com/apidocs/machine-learning" target="_blank">watsonx.ai Runtime Documentation</a> – Details on setting up and integrating AI models.</li>
+<li><strong>watsonx Discovery:</strong><br>
+<a href="https://www.ibm.com/docs/en/watsonx/watson-discovery" target="_blank">watsonx Discovery Documentation</a> – Understand search and data exploration capabilities.</li>
+<li><strong>watsonx Orchestrate:</strong><br>
+<a href="https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current" target="_blank">watsonx Orchestrate Documentation</a> – Explore automated workflow management.</li>
 </ul>
 
 

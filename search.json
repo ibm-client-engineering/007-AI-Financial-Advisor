@@ -36,9 +36,9 @@
   {
     "objectID": "src/solution_overview/environment.html",
     "href": "src/solution_overview/environment.html",
-    "title": "Step Two",
+    "title": "Step Two: Environment Setup",
     "section": "",
-    "text": "Step Two Solution\nThe environment setup includes external integrations with Hugging Face, Gmail, and Yahoo Finance API for enhanced functionality. The system employs Elastic Search indexing for sub-second queries and data enrichment pipelines for advanced metrics. The processing environment includes IBM Code Engine for containerized PDF generation and watsonx.ai for hosting scalable models.\n\nThe environment was set up via IBM Cloud, leveraging the following technologies: - watsonx Orchestrate: Automates workflows like TLH reporting. - watsonx.ai: Hosts scalable AI models. - watsonx Discovery: Provides advanced search capabilities (ElasticSearch). - Code Engine: Executes containerized tasks like PDF generation. - Kibana: Visualizes ElasticSearch data.\n\nIBM Documentation Links\n\nIBM Cloud Object Storage Documentation\nIBM Code Engine Documentation\nElasticSearch on IBM Cloud Documentation",
+    "text": "Environment Setup & External Integrations\nIn this phase, we configure the environment by integrating essential external services:\n\nData Sources & APIs:\nIntegration with Hugging Face for AI model hosting, Gmail for email automation, and Yahoo Finance for real-time data.\nInfrastructure:\nUse of ElasticSearch for fast querying and IBM Code Engine for containerized PDF generation.\n\n\nThe setup leverages IBM Cloud services to ensure scalable and reliable performance.\n\nIBM Documentation Links\n\nIBM Cloud Object Storage:\nCloud Object Storage Documentation\nIBM Code Engine:\nCode Engine Documentation\nElasticSearch on IBM Cloud:\nElasticSearch Documentation",
     "crumbs": [
       "Solution Overview",
       "Environment"
@@ -47,9 +47,9 @@
   {
     "objectID": "src/solution_overview/prepare.html",
     "href": "src/solution_overview/prepare.html",
-    "title": "Step One",
+    "title": "Step One: Prepare – Technical Architecture Overview",
     "section": "",
-    "text": "Step One Solution - The What\nThe solution leverages a multi-layered technical architecture combining watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The data layer ingests structured and unstructured data into Cloud Object Storage, while the processing layer utilizes Mixtral LLM for report generation and a custom BYOM Falcon Model for email generation. The integration layer uses watsonx.orchestrate with prebuilt skills for Gmail automation and custom skills for PDF generation and report formatting.\n\n\nIBM Documentation Links\n\nIBM Cloud Object Storage Documentation\nwatsonx.ai Runtime Documentation\nwatsonx Discovery Documentation\nwatsonx Orchestrate Documentation",
+    "text": "What We’re Building\nThis solution leverages a multi-layered architecture that integrates watsonx.ai, watsonx.discovery, and watsonx.orchestrate. The architecture comprises:\n\nData Layer: Ingests structured and unstructured data into Cloud Object Storage.\nProcessing Layer: Utilizes LLMs (e.g., Mixtral, BYOM Falcon) for dynamic report and email generation.\nIntegration Layer: Employs watsonx.orchestrate for automating workflows such as Gmail and PDF generation.\nInterface Layer: Provides an intuitive UI for real-time insights and actions.\n\n\n\nIBM Documentation Links\n\nIBM Cloud Object Storage:\nGetting Started with IBM Cloud Object Storage – Learn how to provision and configure your storage service.\nwatsonx.ai Runtime:\nwatsonx.ai Runtime Documentation – Details on setting up and integrating AI models.\nwatsonx Discovery:\nwatsonx Discovery Documentation – Understand search and data exploration capabilities.\nwatsonx Orchestrate:\nwatsonx Orchestrate Documentation – Explore automated workflow management.",
     "crumbs": [
       "Solution Overview",
       "Prepare"
@@ -101,9 +101,9 @@
   {
     "objectID": "src/solution_overview/troubleshooting.html",
     "href": "src/solution_overview/troubleshooting.html",
-    "title": "Step Three",
+    "title": "Step Three: Troubleshooting & FAQ",
     "section": "",
-    "text": "Step Three Solution\nThe solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.\n\n\nCommon Issues and Solutions\n\nProblem: Model deployment fails in watsonx.ai Runtime.\n\nSolution: Verify API key permissions in IBM Cloud IAM settings.\n\nProblem: Data ingestion errors in ElasticSearch.\n\nSolution: Validate bucket endpoints and credentials in IBM Cloud Object Storage configuration.\n\n\n\n\nDocumentation Links\n\nGitHub Workflow Management Documentation\nwatsonx Discovery Troubleshooting Guide",
+    "text": "Troubleshooting & Common Issues\nThis section covers typical challenges and their solutions:\n\nModel Deployment Challenges in watsonx.ai Runtime:\n\nSolution: Verify API key permissions and ensure proper IAM configuration in IBM Cloud.\n\nData Ingestion Errors in ElasticSearch:\n\nSolution: Check bucket endpoints and credentials in your Cloud Object Storage settings.\n\n\nThe solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.\n\n\nIBM Documentation Links for Troubleshooting\n\nGitHub Workflow Management:\nGitHub Actions Documentation\nwatsonx Discovery Troubleshooting:\nwatsonx Discovery Troubleshooting Guide",
     "crumbs": [
       "Solution Overview",
       "Troubleshooting"
@@ -127,11 +127,21 @@
     ]
   },
   {
+    "objectID": "index.html#getting-started-prerequisites",
+    "href": "index.html#getting-started-prerequisites",
+    "title": "007 AI Financial Advisory",
+    "section": "Getting Started / Prerequisites",
+    "text": "Getting Started / Prerequisites\nBefore diving in, ensure you have access to IBM Cloud, the necessary API keys, and a basic understanding of AI and data integration. This guide is designed for developers ready to implement a real-world solution with clear, step-by-step instructions.",
+    "crumbs": [
+      "Problem Definition"
+    ]
+  },
+  {
     "objectID": "index.html#the-why",
     "href": "index.html#the-why",
     "title": "007 AI Financial Advisory",
     "section": "The Why",
-    "text": "The Why\nFinancial advisors operate in a rapidly changing regulatory and market environment, where clients expect personalized, tax-efficient, and well-diversified strategies. Constantly shifting tax regulations, market volatility, and manual processes create a perfect storm that makes it difficult for advisors to:\n\nStay compliant.\nDeliver optimal portfolio outcomes.\nEfficiently communicate and scale services to multiple clients.\n\n\n\nProblem Details\nKey challenges include navigating complex tax regulations—where staying updated and spotting tax optimization opportunities requires vigilance—and managing portfolio diversification risks, as aggressive tax-loss harvesting can inadvertently lead to asset concentration and jeopardize future returns. Advisors must also balance strategic planning with reactive market adjustments, all while struggling to keep clients informed in an environment that demands continuous education and rapid responses. Further complications arise from market volatility, where fluctuating asset prices make identifying optimal trading windows difficult, and wash-sale restrictions that can impede tax-loss harvesting efforts. High-return solutions for these issues include reducing the risk of regulatory violations by proactively tracking changes in compliance rules and using automation to deliver personalized, timely insights.\n\n\n\nAdditional Context\nThis set of challenges and potential solutions emerged from a feasibility and value assessment meant to prioritize the most impactful initiatives for financial advisors. By focusing on areas with both high business value and viable implementation paths—like automated wash-sale detection, dynamic portfolio adjustments, and tailored tax-harvesting reports—advisors can more effectively align with regulatory requirements, optimize investment outcomes, and maintain client confidence. This feasibility matrix was done using a Mural board for a discovery workshop and local LLMs including Llama 3.2 and Granite 3.0 to gather output on the key challenges and high ROI areas to focus on for AI for financial advisors.",
+    "text": "The Why\nFinancial advisors operate in a rapidly changing regulatory and market environment, where clients expect personalized, tax-efficient, and well-diversified strategies. Constantly shifting tax regulations, market volatility, and manual processes create a perfect storm that makes it difficult for advisors to:\n\nStay compliant.\nDeliver optimal portfolio outcomes.\nEfficiently communicate and scale services to multiple clients.\n\n\n\nProblem Details\nAdvisors face issues like keeping up with tax regulations, managing portfolio diversification, and timely communication—all compounded by market volatility and regulatory risks. This guide outlines how automation and AI can help mitigate these challenges.\n\n\n\nAdditional Context\nThese challenges were identified during a feasibility assessment using local LLMs (e.g., Llama 3.2, Granite 3.0 via ollama) and collaborative workshops. The goal is to streamline operations, reduce compliance risks, and augment financial advisor processes with AI and automation.",
     "crumbs": [
       "Problem Definition"
     ]

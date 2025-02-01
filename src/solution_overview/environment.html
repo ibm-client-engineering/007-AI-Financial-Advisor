@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Step Two – 007 AI Financial Advisor</title>
+<title>Step Two: Environment Setup – 007 AI Financial Advisor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -223,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-two-solution" id="toc-step-two-solution" class="nav-link active" data-scroll-target="#step-two-solution">Step Two Solution</a></li>
+  <li><a href="#environment-setup-external-integrations" id="toc-environment-setup-external-integrations" class="nav-link active" data-scroll-target="#environment-setup-external-integrations">Environment Setup &amp; External Integrations</a></li>
   </ul>
 </nav>
     </div>
@@ -232,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/solution_overview/prepare.html">Solution Overview</a></li><li class="breadcrumb-item"><a href="../../src/solution_overview/environment.html">Environment</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Step Two</h1>
+<h1 class="title">Step Two: Environment Setup</h1>
 </div>
 
 
@@ -249,19 +249,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="step-two-solution" class="level3">
-<h3 class="anchored" data-anchor-id="step-two-solution">Step Two Solution</h3>
-<p>The environment setup includes external integrations with Hugging Face, Gmail, and Yahoo Finance API for enhanced functionality. The system employs Elastic Search indexing for sub-second queries and data enrichment pipelines for advanced metrics. The processing environment includes IBM Code Engine for containerized PDF generation and watsonx.ai for hosting scalable models.</p>
-<p><img src="../../images/007/Resource_List.png" alt="resources" class="responsive-img"></p>
-<p>The environment was set up via IBM Cloud, leveraging the following technologies: - <strong>watsonx Orchestrate</strong>: Automates workflows like TLH reporting. - <strong>watsonx.ai</strong>: Hosts scalable AI models. - <strong>watsonx Discovery</strong>: Provides advanced search capabilities (ElasticSearch). - <strong>Code Engine</strong>: Executes containerized tasks like PDF generation. - <strong>Kibana</strong>: Visualizes ElasticSearch data.</p>
-<section id="ibm-documentation-links" class="level4">
-<h4 class="anchored" data-anchor-id="ibm-documentation-links"><strong>IBM Documentation Links</strong></h4>
+<section id="environment-setup-external-integrations" class="level3">
+<h3 class="anchored" data-anchor-id="environment-setup-external-integrations">Environment Setup &amp; External Integrations</h3>
+<p>In this phase, we configure the environment by integrating essential external services:</p>
 <ul>
-<li><a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage" target="_blank">IBM Cloud Object Storage Documentation</a></li>
-<li><a href="https://cloud.ibm.com/docs/codeengine" target="_blank">IBM Code Engine Documentation</a></li>
-<li><a href="https://cloud.ibm.com/docs/databases-for-elasticsearch" target="_blank">ElasticSearch on IBM Cloud Documentation</a></li>
+<li><strong>Data Sources &amp; APIs:</strong><br>
+Integration with Hugging Face for AI model hosting, Gmail for email automation, and Yahoo Finance for real-time data.</li>
+<li><strong>Infrastructure:</strong><br>
+Use of ElasticSearch for fast querying and IBM Code Engine for containerized PDF generation.</li>
 </ul>
-<p><img src="../../images/007/Resource_Cont.png" alt="resources" class="responsive-img"></p>
+<p><img src="../../images/007/Resource_List.png" alt="Resource List" class="responsive-img"></p>
+<p>The setup leverages IBM Cloud services to ensure scalable and reliable performance.</p>
+<section id="ibm-documentation-links" class="level4">
+<h4 class="anchored" data-anchor-id="ibm-documentation-links">IBM Documentation Links</h4>
+<ul>
+<li><strong>IBM Cloud Object Storage:</strong><br>
+<a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage" target="_blank">Cloud Object Storage Documentation</a></li>
+<li><strong>IBM Code Engine:</strong><br>
+<a href="https://cloud.ibm.com/docs/codeengine" target="_blank">Code Engine Documentation</a></li>
+<li><strong>ElasticSearch on IBM Cloud:</strong><br>
+<a href="https://cloud.ibm.com/docs/databases-for-elasticsearch" target="_blank">ElasticSearch Documentation</a></li>
+</ul>
+<p><img src="../../images/007/Resource_Cont.png" alt="Resource Configuration" class="responsive-img"></p>
 
 
 </section>
