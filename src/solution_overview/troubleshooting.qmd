@@ -7,14 +7,24 @@ format: html
 
 This section covers typical challenges and their solutions:
 
-1. **Model Deployment Challenges in watsonx.ai Runtime:**  
-   - **Solution:** Verify API key permissions and ensure proper IAM configuration in IBM Cloud.
-2. **Data Ingestion Errors in ElasticSearch:**  
-   - **Solution:** Check bucket endpoints and credentials in your Cloud Object Storage settings.
+| Issue                        | Environment      | Possible Cause                      | Solution                                                   | Documentation Link                                                                                                          |
+|------------------------------|------------------|-------------------------------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Model Deployment Failure     | IBM Cloud        | Incorrect API keys or IAM settings  | Verify API key configuration and IAM permissions           | [IAM Guide](https://cloud.ibm.com/docs/account?topic=account-iamoverview){target="_blank"}                                   |
+| Data Ingestion Error         | On-Premise       | Misconfigured endpoints             | Check storage configuration and credentials                | [Network Setup](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=planning-network-requirements){target="_blank"}       |
+| API Connection Timeout       | Hybrid           | Incorrect endpoint or firewall rules| Review endpoint configurations and network settings         | [Hybrid Setup](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=planning-deployment-approaches){target="_blank"}       |
+
 
 The solution implements AIOps principles with modular architecture and containerized deployments. GitHub manages version control for workflow updates, including the Recommendation Engine and Compliance Module. The system includes debugging processes and rapid deployment walkthroughs, with configuration management for watsonx Discovery, Mixtral, and Bring Your Own Model (BYOM) components from Hugging Face.
 
 <img src="/images/007/IMPLEMENTATION/007_AIOps.png" alt="AIOps Modular Architecture" class="responsive-img">
+
+### Infrastructure Flexibility
+This solution can be deployed on:
+- IBM Cloud (demonstrated here)
+- AWS (using services like S3, Lambda)
+- Azure
+- On-premise using Red Hat OpenShift
+- Air-gapped environments via IBM Software Hub
 
 #### IBM Documentation Links for Troubleshooting
 
