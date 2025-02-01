@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -224,6 +258,9 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#what-were-building" id="toc-what-were-building" class="nav-link active" data-scroll-target="#what-were-building">What We’re Building</a></li>
+  <li><a href="#environment-requirements" id="toc-environment-requirements" class="nav-link" data-scroll-target="#environment-requirements">Environment Requirements</a></li>
+  <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link" data-scroll-target="#initial-setup">Initial Setup</a></li>
+  <li><a href="#deployment-options" id="toc-deployment-options" class="nav-link" data-scroll-target="#deployment-options">Deployment Options</a></li>
   </ul>
 </nav>
     </div>
@@ -259,6 +296,82 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Interface Layer:</strong> Provides an intuitive UI for real-time insights and actions.</li>
 </ul>
 <p><img src="../../images/007/SOLUTION_OVERVIEW/007_Architecture.png" alt="Technical Architecture Diagram" class="responsive-img"></p>
+</section>
+<section id="environment-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="environment-requirements">Environment Requirements</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IBM Cloud CLI</td>
+<td>Latest</td>
+<td>Resource management</td>
+</tr>
+<tr class="even">
+<td>Docker</td>
+<td>20.10+</td>
+<td>Container management</td>
+</tr>
+<tr class="odd">
+<td>Python</td>
+<td>3.8+</td>
+<td>Application runtime</td>
+</tr>
+<tr class="even">
+<td>Git</td>
+<td>2.0+</td>
+<td>Version control</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="initial-setup" class="level3">
+<h3 class="anchored" data-anchor-id="initial-setup">Initial Setup</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install IBM Cloud CLI</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://clis.cloud.ibm.com/install/linux <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install required IBM Cloud plugins</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ibmcloud</span> plugin install container-service</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">ibmcloud</span> plugin install code-engine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deployment-options" class="level3">
+<h3 class="anchored" data-anchor-id="deployment-options">Deployment Options</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Deployment Type</th>
+<th>Infrastructure</th>
+<th>Documentation</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IBM Cloud (SaaS)</td>
+<td>Managed Services</td>
+<td><a href="https://cloud.ibm.com/docs" target="_blank">IBM Cloud Docs</a></td>
+<td>Quick start, managed scaling</td>
+</tr>
+<tr class="even">
+<td>On-Premise</td>
+<td>OpenShift</td>
+<td><a href="https://www.ibm.com/docs/en/software-hub/5.1.x" target="_blank">Software Hub Install</a></td>
+<td>Air-gapped environments</td>
+</tr>
+<tr class="odd">
+<td>Hybrid</td>
+<td>Custom Mix</td>
+<td><a href="https://www.ibm.com/docs/en/cloud-paks/cp-data" target="_blank">Hybrid Guidelines</a></td>
+<td>Enterprise flexibility</td>
+</tr>
+</tbody>
+</table>
 <section id="ibm-documentation-links" class="level4">
 <h4 class="anchored" data-anchor-id="ibm-documentation-links">IBM Documentation Links</h4>
 <ul>
