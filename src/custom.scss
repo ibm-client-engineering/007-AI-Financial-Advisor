@@ -268,28 +268,6 @@ nav .nav-link i, nav .dropdown-item i {
     }
 }
 
-@media (max-width: 768px) {
-    // Example for the navbar: stack items vertically on mobile.
-    .navbar {
-      flex-direction: column;
-      align-items: center;
-      padding: 0.5rem; // adjust as needed
-    }
-    
-    // Example for sidebar and content sections
-    .sidebar,
-    .content {
-      padding: 10px;
-      margin: 0;
-    }
-    
-    // If you want to adjust your navigation pages on mobile:
-    .nav-page {
-      padding: 0.5rem;
-      font-size: 1rem; // adjust font sizes for smaller screens
-    }
-  }
-  
 /* Footer Styling */
 .footer {
     font-size: 1rem; /* Base font size */
@@ -364,67 +342,3 @@ a[role=listitem] {
     color: #f7f2f2; /* Light gray logo color */
     vertical-align: top; /* Aligns logo to the top */
 }
-
-/* Responsive Images */
-.responsive-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Mobile-specific scaling */
-@media (max-width: 768px) {
-    .responsive-img {
-        max-width: 80%;  /* Adjust percentage as needed */
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-page-text {
-      font-size: 1.2rem;  /* or whatever size is comfortable on mobile */
-    }
-    .nav-page {
-      flex-direction: column;   /* Place “previous” and “next” on separate lines if you prefer */
-      align-items: center;
-      max-width: 100% !important; /* fix top and bottom nav */
-    }
-  }
-  
-@media (max-width: 768px) {
-    .navbar {
-      flex-direction: column; 
-      align-items: flex-start; 
-      padding: 0.5rem; 
-    }
-  }
-
-/* Mobile fix for next/previous links going off-screen */
-@media (max-width: 768px) {
-    /* Let the whole page-navigation flex container wrap if needed. */
-    .page-navigation {
-      flex-wrap: wrap;
-    }
-  
-    .nav-page {
-      flex-direction: column;
-      max-width: 100% !important; 
-      margin: 0 auto; 
-      padding: 0.5rem;
-      text-align: center;
-    }
-  
-    /* If the text is huge, scale it down further. */
-    .nav-page-text {
-      font-size: 1.2rem !important; 
-      margin: 0.5rem 0; 
-    }
-  
-    /* Let the link text wrap when it’s too long. */
-    .nav-page a {
-      flex-wrap: wrap;
-      white-space: normal;
-    }
-  }
-  
