@@ -4,7 +4,7 @@ ibm-cos-sdk==2.14.0
 fpdf==1.7.2
 matplotlib==3.7.1
 Pillow==9.5.0
-pydantic==1.10.7
+pydantic==1.10.13
 requests==2.32.0
 numpy==1.25.2
 
